@@ -1,0 +1,26 @@
+{
+    "name": "tei187/php-html-builder",
+    "description": "Generating HTML output.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "tei187\\HTMLBuilder\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "tei187",
+            "email": "bonk.piotr@gmail.com"
+        }
+    ],
+    "require": {
+        "tei187/utilities-php": "dev-main"
+    },
+    "require-dev": {
+        "onspli/phpdoc-markdown": "^0.3.3"
+    },
+    "scripts": {
+        "gendoc": "php phpDocumentor.phar --directory=src --target=docs --template=vendor/onspli/phpdoc-markdown/templates/public-onefile"
+    }
+}
