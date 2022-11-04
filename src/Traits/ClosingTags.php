@@ -25,7 +25,7 @@ trait ClosingTags {
         return 
             "<{$tag}" .
                 self::_ListAttributes($attributes, $limit) .
-            ">{$content}</{$tag}>" . PHP_EOL;
+            ">" . PHP_EOL . "{$content}". PHP_EOL . "</{$tag}>" . PHP_EOL;
     }
     /**
      * Self-closing tags template.

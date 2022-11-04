@@ -1,5 +1,24 @@
 # Documentation
 
+## Example
+```php
+    use tei187\HTMLBuilder\HTML as HTML;
+
+    echo
+        HTML::Body(['class' => "main"], 
+            HTML::Heading(1, ['class' => "text-red"], "Hello World!") . 
+            HTML::Paragraph([], "Paragraph example")
+        );
+```
+will output
+```html
+<body class='main'>
+    <h1 class='text-red'>Hello World!</h1>
+    <p>Paragraph example</p>
+</body>
+```
+...or something like that, without tabulation because who really does that anyway...
+
 ## Table of Contents
 
 | Method | Description |
