@@ -2,6 +2,7 @@
 
 require_once __DIR__ . "/vendor/autoload.php";
 
+require_once __DIR__ . "/src/Defines/Doctype.php";
 require_once __DIR__ . "/src/Traits/ListableAttributes.php";
 require_once __DIR__ . "/src/Traits/ClosingTags.php";
 require_once __DIR__ . "/src/HTML.php";
