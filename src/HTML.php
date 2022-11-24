@@ -4,7 +4,8 @@ namespace tei187\HTMLBuilder;
 
 use tei187\HTMLBuilder\Traits\ClosingTags;
 use tei187\HTMLBuilder\Traits\ListableAttributes;
-use tei187\HTMLBuilder\Defines\Doctype;
+use tei187\HTMLBuilder\Constants\Doctype;
+use tei187\HTMLBuilder\Head;
 use tei187\Utilities;
 
 /**
@@ -56,8 +57,17 @@ class HTML {
      * @param string|null $type Accepts string or flag: `DOCTYPE_HTML5`, `DOCTYPE_HTML4_STRICT`, `DOCTYPE_HTML4_TRANSITIONAL`, `DOCTYPE_HTML4_FRAMESET`, `DOCTYPE_XHTML1_STRICT`, `DOCTYPE_XHTML1_TRANSITIONAL`, `DOCTYPE_XHTML1_FRAMESET`, `DOCTYPE_XHTML1_BASIC`, `DOCTYPE_XHTML11`, `DOCTYPE_XHTML11_BASIC`, `DOCTYPE_XHTML_MATHML_SVG`;
      * @return string
      */
-    static function Doctype(?string $type = DOCTYPE_HTML5) : string {
-        return "<!DOCTYPE ". (Utilities::empty($type, true) ? DOCTYPE_HTML5 : $type) . ">";
+    static function Doctype(?string $type = Doctype::HTML5) : string {
+        return "<!DOCTYPE ". (Utilities::empty($type, true) ? Doctype::HTML5 : $type) . ">";
+    }
+    /**
+     * Alias of tei187\HTMLBuilder\Head::Head method.
+     *
+     * @param string|null $content
+     * @return string
+     */
+    static function Head(?string $content = null) : string {
+        return Head::Head($content);
     }
     /**
      * Heading render.
