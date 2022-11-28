@@ -6,16 +6,40 @@ use DateTime;
 use tei187\HTMLBuilder\Head;
 
 class Book {
-    static function Author(?string $author = null) {
+    /**
+     * `og:book:author`
+     *
+     * @param string|null $author
+     * @return string
+     */
+    static function Author(?string $author = null) : string {
         return Head::MetaProperty('og:book:author', $author);
     }
-    static function ReleaseDate(?DateTime $date = null) {
+    /**
+     * `og:book:release_date`
+     *
+     * @param DateTime|null $date
+     * @return string
+     */
+    static function ReleaseDate(?DateTime $date = null) : string {
         return Head::MetaProperty('og:book:release_date', $date);
     }
-    static function ISBN(?string $isbn = null) {
+    /**
+     * `og:book:isbn`
+     *
+     * @param string|null $isbn
+     * @return string
+     */
+    static function ISBN(?string $isbn = null) : string {
         return Head::MetaProperty('og:book:isbn', $isbn);
     }
-    static function Tag(?string $tag = null) {
+    /**
+     * `og:book:tag`
+     *
+     * @param string|null $tag
+     * @return string
+     */
+    static function Tag(?string $tag = null) : string {
         return Head::MetaProperty('og:book:tag', $tag);
     }
 }
