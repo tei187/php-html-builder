@@ -102,6 +102,31 @@ class HTML {
     }
     /**
      * HTML render.
+     * 
+     * Example use: 
+     * ```php
+     * use tei187\HTMLBuilder\HTML;
+     * use tei187\HTMLBuilder\Head;
+     * use tei187\HTMLBuilder\OpenGraph;
+     * 
+     * HTML::Doctype() . 
+     * HTML::Html(
+     *  [ 
+     *      'prefix' => "og: http://ogp.me/ns#",
+     *      'lang'   => "en-US" 
+     *  ],
+     *  HTML::Head(
+     *      Head::Charset() . 
+     *      Head::Title("Testing page") . 
+     *      OpenGraph::Type('website') . 
+     *      OpenGraph::Url('localhost') . 
+     *      OpenGraph::SiteName("Testing page") .
+     *      OpenGraph::Description("Just a testing page for HTML builder based on PHP") . 
+     *      Head::StyleSheet("/assets/css/style.min.css")
+     *  ) . 
+     *  HTML::Body([], "Content")
+     * );
+     * ```
      *
      * @param array|null $attributes
      * @param string|null $content
@@ -222,7 +247,7 @@ class HTML {
      * Table row (tr) render.
      *
      * @param array|null $attributes
-     * @param [type] $cells
+     * @param array|string|null $cells
      * @return string
      */
     static function TableRow(?array $attributes = null, $cells = null) : string {

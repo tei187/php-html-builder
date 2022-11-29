@@ -21,6 +21,7 @@
         "onspli/phpdoc-markdown": "^0.3.3"
     },
     "scripts": {
-        "gendoc": "php phpDocumentor.phar --directory=src --target=docs --template=vendor/onspli/phpdoc-markdown/templates/public-onefile"
+        "gendoc": "php phpDocumentor.phar --directory=src --target=docs --template=vendor/onspli/phpdoc-markdown/templates/public-onefile",
+        "rundocs": "php phpDocumentor.phar -d app -d src -t docs"
     }
 }

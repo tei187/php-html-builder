@@ -72,24 +72,66 @@ class Video {
         return Head::MetaProperty('og:video:duration', $duration);
     }
 
+    /**
+     * `og:video:actor`
+     *
+     * @param string|null $actor
+     * @return string
+     */
     static function Actor(?string $actor = null) : string {
         return Head::MetaProperty('og:video:actor', $actor);
     }
+    /**
+     * `og:video:actor:role`
+     *
+     * @param string|null $role
+     * @return string
+     */
     static function ActorRole(?string $role = null) : string {
         return Head::MetaProperty('og:video:actor:role', $role);
     }
+    /**
+     * `og:video:director`
+     *
+     * @param string|null $director
+     * @return string
+     */
     static function Director(?string $director = null) : string {
         return Head::MetaProperty('og:video:director', $director);
     }
+    /**
+     * `og:video:writer`
+     *
+     * @param string|null $writer
+     * @return string
+     */
     static function Writer(?string $writer = null) : string {
         return Head::MetaProperty('og:video:writer', $writer);
     }
+    /**
+     * `og:video:release_date`
+     *
+     * @param DateTime|null $date
+     * @return string
+     */
     static function ReleaseDate(?DateTime $date = null) : string {
         return Head::MetaProperty('og:video:release_date', $date);
     }
+    /**
+     * `og:video:tag`
+     *
+     * @param string|null $tag
+     * @return string
+     */
     static function Tag(?string $tag = null) : string {
         return Head::MetaProperty('og:video:tag', $tag);
     }
+    /**
+     * `og:video:series`
+     *
+     * @param string|null $title
+     * @return string
+     */
     static function Series(?string $title = null) : string {
         return Head::MetaProperty('og:video:series', $title);
     }
