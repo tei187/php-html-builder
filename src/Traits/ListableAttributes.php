@@ -20,4 +20,10 @@ trait ListableAttributes {
                 $o .= " ".strtolower($attr)."='".htmlentities($value)."'";
         return $o;
     }
+    static private function _RetypeAttributes($attributes) : array {
+        return 
+            is_array($attributes)
+                ? $attributes
+                : [];
+    }
 }

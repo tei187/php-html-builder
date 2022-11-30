@@ -102,31 +102,6 @@ class HTML {
     }
     /**
      * HTML render.
-     * 
-     * Example use: 
-     * ```php
-     * use tei187\HTMLBuilder\HTML;
-     * use tei187\HTMLBuilder\Head;
-     * use tei187\HTMLBuilder\OpenGraph;
-     * 
-     * HTML::Doctype() . 
-     * HTML::Html(
-     *  [ 
-     *      'prefix' => "og: http://ogp.me/ns#",
-     *      'lang'   => "en-US" 
-     *  ],
-     *  HTML::Head(
-     *      Head::Charset() . 
-     *      Head::Title("Testing page") . 
-     *      OpenGraph::Type('website') . 
-     *      OpenGraph::Url('localhost') . 
-     *      OpenGraph::SiteName("Testing page") .
-     *      OpenGraph::Description("Just a testing page for HTML builder based on PHP") . 
-     *      Head::StyleSheet("/assets/css/style.min.css")
-     *  ) . 
-     *  HTML::Body([], "Content")
-     * );
-     * ```
      *
      * @param array|null $attributes
      * @param string|null $content
@@ -202,6 +177,24 @@ class HTML {
      */
     static function Paragraph(?array $attributes = [], ?string $content = null) : string {
         return self::_PairedTags('p', $content, $attributes, []);
+    }
+    /**
+     * Script render.
+     *
+     * @param array|null $attributes
+     * @param string|null $source
+     * @param string|null $type
+     * @param string|null $content
+     * @return string
+     */
+    static function Script(?array $attributes, ?string $source = null, ?string $type = null, ?string $content = null) : string {
+        foreach(['src' => $source, 'type' => $type] as $attr => $value) {
+            !Utilities::empty($value)
+                ? $attributes[$attr] = $value
+                : null;
+        }
+
+        return self::_PairedTags("script", $content, $attributes);
     }
     /**
      * Span render.

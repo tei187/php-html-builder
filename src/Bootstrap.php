@@ -3,35 +3,17 @@
 namespace tei187\HTMLBuilder;
 
 use tei187\HTMLBuilder\Traits\ListableAttributes;
+use tei187\HTMLBuilder\Traits\BootstrapTags;
 use tei187\HTMLBuilder\HTML as Elements;
+use tei187\HTMLBuilder\Bootstrap\Nav;
 
 /**
  * Generates HTML for Bootstrap-specific elements.
  */
 class Bootstrap {
-    use ListableAttributes;
-
-    /**
-     * Default paired tags for Bootstrap.
-     * 
-     * @param string $tag Opening tag.
-     * @param string $defaultClass Bootstrap-relevant class.
-     * @param string|null $content Between tags.
-     * @param array|null $attributes Self-explanatory.
-     * @param array|null $limit ?
-     * @return string
-     */
-    static function _PairedBootstrapTags(string $tag, string $defaultClass, ?string $content = null, array $attributes = [], array $limit = []) : string {
-        return
-            "<{$tag} class='{$defaultClass}"
-                . (isset($attributes['class'])
-                    ? " " . $attributes['class'] . "'" 
-                    : "'")
-                . self::_ListAttributes($attributes, array_merge($limit, [ 'class' ]))
-                . ">".$content."</{$tag}>" . PHP_EOL;
-    }
-
-    
+    use ListableAttributes,
+        BootstrapTags;
+        
     /* basic */
 
     /**
@@ -41,7 +23,7 @@ class Bootstrap {
      * @param string|null $content
      * @return string
      */
-    static function Button(?array $attributes, ?string $content = null) : string {
+    static function Button(array $attributes, ?string $content = null) : string {
         return self::_PairedBootstrapTags('button', 'btn', $content, $attributes);
     }
     /**
@@ -51,7 +33,7 @@ class Bootstrap {
      * @param string|null $content
      * @return string
      */
-    static function ButtonLink(?array $attributes, ?string $content = null) : string {
+    static function ButtonLink(array $attributes, ?string $content = null) : string {
         return self::_PairedBootstrapTags('a', 'btn', $content, $attributes);
     }
     /**
@@ -94,7 +76,7 @@ class Bootstrap {
      * @param array|null $attributes
      * @return string
      */
-    static function Icon(?string $name, ?array $attributes = []) : string {
+    static function Icon(?string $name, array $attributes = []) : string {
         if(key_exists('class', $attributes)) {
             $attributes['class'] .= " " . $name;
         } else {
@@ -103,16 +85,7 @@ class Bootstrap {
 
         return self::_PairedBootstrapTags('i', 'fa', null, $attributes, []);
     }    
-    /**
-     * Nav-class render.
-     *
-     * @param array $attributes
-     * @param string|null $content
-     * @return string
-     */
-    static function Nav(array $attributes = [], ?string $content = null) : string {
-        return self::_PairedBootstrapTags('nav', 'navbar bg-dark justify-content-between', $content, $attributes, []);
-    }    
+
     /**
      * Row-class render.
      *
@@ -141,6 +114,109 @@ class Bootstrap {
         return Elements::Table($attributes, $content);
     }
 
+    /* navigation */ 
+
+    /**
+     * Nav-class render.
+     * 
+     * Alias of \tei187\HTMLBuilder\Bootstrap\Nav::Nav.
+     *
+     * @param array $attributes
+     * @param string|null $content
+     * @return string
+     */
+    static function Nav(array $attributes = [], ?string $content = null) : string {
+        return Nav::Nav($attributes, $content);
+    }
+    /**
+     * UL.navbar-nav render.
+     * 
+     * Alias of \tei187\HTMLBuilder\Bootstrap\Nav::Navbar.
+     *
+     * @param array|null $attributes
+     * @param string|null $content
+     * @return string
+     */
+    static function NavbarNav(array $attributes = [], ?string $content = null) : string {
+        return Nav::Navbar($attributes, $content);
+    }
+    /**
+     * LI.nav-item render.
+     * 
+     * Alias of \tei187\HTMLBuilder\Bootstrap\Nav::Item.
+     *
+     * @param array|null $attributes
+     * @param string|null $content
+     * @param boolean $dropdown Mark as dropdown container.
+     * @return string
+     */
+    static function NavItem(array $attributes = [], ?string $content = null, bool $dropdown = false) : string {
+        return Nav::Item($attributes, $content, $dropdown);
+    }
+    /**
+     * A.nav-link render.
+     * 
+     * Alias of \tei187\HTMLBuilder\Bootstrap\Nav::Link.
+     *
+     * @param array|null $attributes
+     * @param string|null $content
+     * @param string|null $href
+     * @param boolean $active FALSE by default.
+     * @return string
+     */
+    static function NavbarLink(array $attributes = [], ?string $content = null, ?string $href = "#", bool $active = false, bool $dropdownToggle = false) : string {
+        return Nav::Link($attributes, $content, $href, $active, $dropdownToggle);
+    }
+    /**
+     * A.nav-link.dropdown-toggle[href="#"][data-bs-toggle="dropdown"] render.
+     *
+     * Alias of \tei187\HTMLBuilder\Bootstrap\Nav::DropdownToggle.
+     * 
+     * @param array|null $attributes
+     * @param string|null $content
+     * @return string
+     */
+    static function NavbarDropdownToggle(array $attributes = [], ?string $content = null) : string {
+        return Nav::DropdownToggle($attributes, $content);
+    }
+    /**
+     * UL.dropdown-menu
+     * 
+     * Alias of \tei187\HTMLBuilder\Bootstrap\Nav::DropdownMenu.
+     *
+     * @param array $attributes
+     * @param array|string|null $content String or array with items from method ::NavbarDropdownItemLink or ::NavbarDropdownItemCustom.
+     * @return string
+     */
+    static function NavbarDropdownMenu(array $attributes = [], $content = null) : string {
+        return Nav::DropdownMenu($attributes, $content);
+    }
+    /**
+     * LI > A.dropdown-item
+     * 
+     * Alias of \tei187\HTMLBuilder\Bootstrap\Nav::DropdownItem.
+     *
+     * @param array $attributes
+     * @param string|null $content
+     * @param string $href
+     * @return string
+     */
+    static function NavbarDropdownItemLink(array $attributes = [], ?string $content = null, ?string $href = "#") : string {
+        return Nav::DropdownItemLink($attributes, $content, $href);
+    }
+    /**
+     * LI > {$tag}.dropdown-item
+     * 
+     * Alias of \tei187\HTMLBuilder\Bootstrap\Nav::DropdownItemCustom.
+     *
+     * @param string $tag
+     * @param array $attributes
+     * @param string|null $content
+     * @return string 
+     */
+    static function NavbarDropdownItemCustom(string $tag, array $attributes = [], ?string $content = null) : string {
+        return Nav::DropdownItemCustom($tag, $attributes, $content);
+    }
 
     /* input group */
 
@@ -245,7 +321,8 @@ class Bootstrap {
      * @param string|null $append
      * @return string
      */
-    static function InputGroupWithBtn( array $attributes = [], ?string $prepend = null, $value = [ ['id' => null, 'name' => null, 'value' => null, 'type' => 'text', 'placeholder' => null] ], ?string $append = null ) : string {
+    static function InputGroupWithBtn(array $attributes = [], ?string $prepend = null, $value = [ ['id' => null, 'name' => null, 'value' => null, 'type' => 'text', 'placeholder' => null] ], ?string $append = null ) : string {
+        
         $prependStr = 
             !empty($prepend) && strlen(trim($prepend)) > 0
                 ? self::_InputGroupPrepend( [], self::_PairedBootstrapTags('div', 'input-group-text', $prepend) )
@@ -376,7 +453,7 @@ class Bootstrap {
      * @param string|null $footerContent
      * @return string
      */
-    static function Modal(?array $attributes = [], ?string $id = null, ?string $title = null, ?string $content = null, ?string $footerContent = null) : string {
+    static function Modal(array $attributes = [], ?string $id = null, ?string $title = null, ?string $content = null, ?string $footerContent = null) : string {
         $defaultAttributes = [
             'class' => 'modal fade',
             'id' => is_null($id) ? 'myModal' : $id,
@@ -418,7 +495,7 @@ class Bootstrap {
      * @param string $target
      * @return string
      */
-    static function ButtonModalToggle(?array $attributes, ?string $content = null, string $target) : string {
+    static function ButtonModalToggle(array $attributes, ?string $content = null, string $target) : string {
         $defaultAttributes = [
             'data-toggle' => 'modal',
             'data-target' => "#".$target
