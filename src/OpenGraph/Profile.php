@@ -5,9 +5,12 @@ namespace tei187\HTMLBuilder\OpenGraph;
 use DateTime;
 use tei187\HTMLBuilder\Head;
 
+/**
+ * OpenGraph's **og:profile** specific tags.
+ */
 class Profile {
     /**
-     * `og:profile:first_name`
+     * og:profile:first_name
      *
      * @param string|null $name
      * @return string
@@ -16,7 +19,7 @@ class Profile {
         return Head::MetaProperty('og:profile:first_name', $name);
     }
     /**
-     * `og:profile:last_name`
+     * og:profile:last_name
      *
      * @param string|null $name
      * @return string
@@ -25,7 +28,7 @@ class Profile {
         return Head::MetaProperty('og:profile:last_name', $name);
     }
     /**
-     * `og:profile:username`
+     * og:profile:username
      *
      * @param string|null $username
      * @return string
@@ -34,7 +37,7 @@ class Profile {
         return Head::MetaProperty('og:profile:username', $username);
     }
     /**
-     * `og:profile:gender`
+     * og:profile:gender
      *
      * @param string|null $gender By OpenGraph documentation should be enum(male,female)
      * @return string

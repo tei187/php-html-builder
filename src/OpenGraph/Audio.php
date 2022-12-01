@@ -4,9 +4,12 @@ namespace tei187\HTMLBuilder\OpenGraph;
 
 use tei187\HTMLBuilder\Head;
 
+/**
+ * OpenGraph's **og:audio** specific tags.
+ */
 class Audio {
     /**
-     * `og:audio`
+     * og:audio
      * 
      * A relevant audio URL for your object.
      *
@@ -17,7 +20,7 @@ class Audio {
         return Head::MetaProperty('og:audio', $url);
     }
     /**
-     * `og:audio:title`
+     * og:audio:title
      *
      * @param string|null $title
      * @return string
@@ -26,7 +29,7 @@ class Audio {
         return Head::MetaProperty('og:audio:title', $title);
     }
     /**
-     * `og:audio:artist`
+     * og:audio:artist
      *
      * @param string|null $artist
      * @return string
@@ -35,7 +38,7 @@ class Audio {
         return Head::MetaProperty('og:audio:artist', $artist);
     }
     /**
-     * `og:audio:album`
+     * og:audio:album
      *
      * @param string|null $title
      * @return string
@@ -44,7 +47,7 @@ class Audio {
         return Head::MetaProperty('og:audio:album', $title);
     }
     /**
-     * `og:audio:type`
+     * og:audio:type
      *
      * @param string|null $type https://mimetype.io/all-types/#audio
      * @return string

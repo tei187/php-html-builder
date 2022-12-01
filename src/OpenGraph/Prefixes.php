@@ -5,7 +5,7 @@ namespace tei187\HTMLBuilder\OpenGraph;
 use tei187\HTMLBuilder\OpenGraph\Namespaces;
 
 /**
- * Returns as `type: vocabulary_uri`.
+ * Returns as **type: vocabulary_uri**.
  * @uses tei187\HTMLBuilde\OpenGraph\Namespaces
  */
 class Prefixes {

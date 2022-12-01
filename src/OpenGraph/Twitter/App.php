@@ -9,7 +9,7 @@ class App {
 /* ID */
 
     /**
-     * `twitter:app:id:iphone`
+     * twitter:app:id:iphone
      *
      * String value, and should be the numeric representation of your app ID in the App Store (i.e. “307234931”).
      * 
@@ -20,7 +20,7 @@ class App {
         return Head::MetaProperty('twitter:app:id:iphone', $id);
     }
     /**
-     * `twitter:app:id:ipad`
+     * twitter:app:id:ipad
      *
      * String value, and should be the numeric representation of your app ID in the App Store (i.e. “307234931”).
      * 
@@ -31,7 +31,7 @@ class App {
         return Head::MetaProperty('twitter:app:id:ipad', $id);
     }
     /**
-     * `twitter:app:id:googleplay`
+     * twitter:app:id:googleplay
      *
      * String value, and should be the numeric representation of your app ID in Google Play (.i.e. “com.android.app”).
      * 
@@ -45,7 +45,7 @@ class App {
 /* URL */
 
     /**
-     * `twitter:app:url:iphone`
+     * twitter:app:url:iphone
      *
      * Your app’s custom URL scheme (you must include ”://” after your scheme name).
      * 
@@ -56,7 +56,7 @@ class App {
         return Head::MetaProperty('twitter:app:url:iphone', $url);
     }
     /**
-     * `twitter:app:url:ipad`
+     * twitter:app:url:ipad
      *
      * Your app’s custom URL scheme.
      * 
@@ -67,7 +67,7 @@ class App {
         return Head::MetaProperty('twitter:app:url:ipad', $url);
     }
     /**
-     * `twitter:app:url:googleplay`
+     * twitter:app:url:googleplay
      *
      * Your app’s custom URL scheme.
      * 
@@ -81,7 +81,7 @@ class App {
 /* NAME */
 
     /**
-     * `twitter:app:name:iphone`
+     * twitter:app:name:iphone
      *
      * Name of your iPhone app.
      * 
@@ -92,7 +92,7 @@ class App {
         return Head::MetaProperty('twitter:app:name:iphone', $name);
     }
     /**
-     * `twitter:app:name:ipad`
+     * twitter:app:name:ipad
      *
      * Name of your iPad optimized app.
      * 
@@ -103,7 +103,7 @@ class App {
         return Head::MetaProperty('twitter:app:name:ipad', $name);
     }
     /**
-     * `twitter:app:name:googleplay`
+     * twitter:app:name:googleplay
      *
      * Name of your Android app.
      * 
@@ -114,10 +114,55 @@ class App {
         return Head::MetaProperty('twitter:app:name:googleplay', $name);
     }
 
+/* COMPOUND */
+
+    /**
+     * Returns 3 META tags with **twitter:app** prefix for **name:iphone**, **id:iphone** and **url:iphone**.
+     *
+     * @param string|null $name Name of your iPhone optimized app.
+     * @param string|null $id String value, and should be the numeric representation of your app ID in the App Store (i.e. “307234931”).
+     * @param string|null $url Your app’s custom URL scheme.
+     * @return string
+     */
+    static function iPhone(?string $name = null, ?string $id = null, ?string $url = null) : string {
+        return
+            self::iPhoneName($name) . 
+            self::iPhoneId($id) . 
+            self::iPhoneUrl($url);
+    }
+    /**
+     * Returns 3 META tags with **twitter:app** prefix for **name:ipad**, **id:ipad** and **url:ipad**.
+     *
+     * @param string|null $name Name of your iPad optimized app.
+     * @param string|null $id String value, and should be the numeric representation of your app ID in the App Store (i.e. “307234931”).
+     * @param string|null $url Your app’s custom URL scheme.
+     * @return string
+     */
+    static function iPad(?string $name = null, ?string $id = null, ?string $url = null) : string {
+        return
+            self::iPadName($name) . 
+            self::iPadId($id) . 
+            self::iPadUrl($url);
+    }
+    /**
+     * Returns 3 META tags with **twitter:app** prefix for **name:googleplay**, **id:googleplay** and **url:googleplay**.
+     *
+     * @param string|null $name Name of your Android app.
+     * @param string|null $id String value, and should be the numeric representation of your app ID in Google Play (.i.e. “com.android.app”).
+     * @param string|null $url Your app’s custom URL scheme.
+     * @return string
+     */
+    static function GooglePlay(?string $name = null, ?string $id = null, ?string $url = null) : string {
+        return
+            self::GooglePlayName($name) . 
+            self::GooglePlayId($id) . 
+            self::GooglePlayUrl($url);
+    }
+
  /* OTHER */
 
     /**
-     * `twitter:app:country`
+     * twitter:app:country
      *
      * If your application is not available in the US App Store, you must set this value to the two-letter country code for the App Store that contains your application.
      * 

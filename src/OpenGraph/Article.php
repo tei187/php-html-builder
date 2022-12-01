@@ -5,9 +5,12 @@ namespace tei187\HTMLBuilder\OpenGraph;
 use DateTime;
 use tei187\HTMLBuilder\Head;
 
+/**
+ * OpenGraph's **og:article** specific tags.
+ */
 class Article {
     /**
-     * `og:article:published_time`
+     * og:article:published_time
      *
      * @param DateTime|null $time
      * @return string
@@ -16,7 +19,7 @@ class Article {
         return Head::MetaProperty('og:article:published_time', $time);
     }
     /**
-     * `og:article:modified_time`
+     * og:article:modified_time
      *
      * @param DateTime|null $time
      * @return string
@@ -25,7 +28,7 @@ class Article {
         return Head::MetaProperty('og:article:modified_time', $time);
     }
     /**
-     * `og:article:expiration_time`
+     * og:article:expiration_time
      *
      * @param DateTime|null $time
      * @return string
@@ -34,7 +37,7 @@ class Article {
         return Head::MetaProperty('og:article:expiration_time', $time);
     }
     /**
-     * `og:article:author`
+     * og:article:author
      *
      * @param string|null $author
      * @return string
@@ -43,7 +46,7 @@ class Article {
         return Head::MetaProperty('og:article:author', $author);
     }
     /**
-     * `og:article:section`
+     * og:article:section
      *
      * @param string|null $section
      * @return string
@@ -52,7 +55,7 @@ class Article {
         return Head::MetaProperty('og:article:section', $section);
     }
     /**
-     * `og:article:tag`
+     * og:article:tag
      *
      * @param string|null $tag
      * @return string

@@ -5,9 +5,12 @@ namespace tei187\HTMLBuilder\OpenGraph;
 use DateTime;
 use tei187\HTMLBuilder\Head;
 
+/**
+ * OpenGraph's **og:video** specific tags.
+ */
 class Video {
     /**
-     * `og:video`
+     * og:video
      * 
      * A relevant video URL for your object.
      *
@@ -18,7 +21,7 @@ class Video {
         return Head::MetaProperty('og:video', $url);
     }
     /**
-     * `og:video:secure_url`
+     * og:video:secure_url
      * 
      * A relevant, secure video URL for your object.
      *
@@ -29,7 +32,7 @@ class Video {
         return Head::MetaProperty('og:video:secure_url', $url);
     }
     /**
-     * `og:video:height`
+     * og:video:height`
      * 
      * The height of a video.
      *
@@ -40,7 +43,7 @@ class Video {
         return Head::MetaProperty('og:video:height', $height);
     }
     /**
-     * `og:video:width`
+     * og:video:width
      * 
      * The width of a video.
      *
@@ -51,7 +54,7 @@ class Video {
         return Head::MetaProperty('og:video:width', $width);
     }
     /**
-     * `og:video:type`
+     * og:video:type
      * 
      * The MIME type of a video.
      *
@@ -62,7 +65,7 @@ class Video {
         return Head::MetaProperty('og:video:type', $type);    
     }
     /**
-     * `og:video:duration`
+     * og:video:duration
      *
      * @param integer|null $duration
      * @return string
@@ -73,7 +76,7 @@ class Video {
     }
 
     /**
-     * `og:video:actor`
+     * og:video:actor
      *
      * @param string|null $actor
      * @return string
@@ -82,7 +85,7 @@ class Video {
         return Head::MetaProperty('og:video:actor', $actor);
     }
     /**
-     * `og:video:actor:role`
+     * og:video:actor:role
      *
      * @param string|null $role
      * @return string
@@ -91,7 +94,7 @@ class Video {
         return Head::MetaProperty('og:video:actor:role', $role);
     }
     /**
-     * `og:video:director`
+     * og:video:director
      *
      * @param string|null $director
      * @return string
@@ -100,7 +103,7 @@ class Video {
         return Head::MetaProperty('og:video:director', $director);
     }
     /**
-     * `og:video:writer`
+     * og:video:writer
      *
      * @param string|null $writer
      * @return string
@@ -109,7 +112,7 @@ class Video {
         return Head::MetaProperty('og:video:writer', $writer);
     }
     /**
-     * `og:video:release_date`
+     * og:video:release_date
      *
      * @param DateTime|null $date
      * @return string
@@ -118,7 +121,7 @@ class Video {
         return Head::MetaProperty('og:video:release_date', $date);
     }
     /**
-     * `og:video:tag`
+     * og:video:tag
      *
      * @param string|null $tag
      * @return string
@@ -127,7 +130,7 @@ class Video {
         return Head::MetaProperty('og:video:tag', $tag);
     }
     /**
-     * `og:video:series`
+     * og:video:series
      *
      * @param string|null $title
      * @return string

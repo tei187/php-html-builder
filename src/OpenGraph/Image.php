@@ -4,9 +4,12 @@ namespace tei187\HTMLBuilder\OpenGraph;
 
 use tei187\HTMLBuilder\Head;
 
+/**
+ * OpenGraph's **og:image** specific tags.
+ */
 class Image {
     /**
-     * `og:image`
+     * og:image
      * 
      * An image URL which should represent your object within the graph.
      *
@@ -17,7 +20,7 @@ class Image {
         return Head::MetaProperty('og:image', $url);
     }
     /**
-     * `og:image:secure_url`
+     * og:image:secure_url
      * 
      * A secure image URL which should represent your object within the graph.
      *
@@ -28,7 +31,7 @@ class Image {
         return Head::MetaProperty('og:image:secure_url', $url);
     }
     /**
-     * 'og:image:type'
+     * 'og:image:type
      * 
      * The MIME type of an image.
      *
@@ -39,7 +42,7 @@ class Image {
         return Head::MetaProperty('og:image:type', $type);
     }
     /**
-     * `og:image:height`
+     * og:image:height
      * 
      * The height of an image.
      *
@@ -50,7 +53,7 @@ class Image {
         return Head::MetaProperty('og:image:height', $height);
     }
     /**
-     * `og:image:width`
+     * og:image:width
      * 
      * The width of an image.
      *
@@ -61,7 +64,7 @@ class Image {
         return Head::MetaProperty('og:image:width', $width);
     }
     /**
-     * `og:image:alt`
+     * og:image:alt
      *
      * @param string|null $content
      * @return string

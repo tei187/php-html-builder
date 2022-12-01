@@ -2,6 +2,9 @@
 
 namespace tei187\HTMLBuilder\Traits;
 
+/**
+ * Tag attribute sorter and checker.
+ */
 trait ListableAttributes {
     /**
      * Attributes list template.

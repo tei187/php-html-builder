@@ -2,6 +2,9 @@
 
 namespace tei187\HTMLBuilder\Constants;
 
+/**
+ * Doctype helpers.
+ */
 class Doctype {
     /* HTML5 */
     const HTML5 = "html";
@@ -23,5 +26,4 @@ class Doctype {
     
     /* COMPOUND */
     const XHTML_MATHML_SVG =    "html PUBLIC \"-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN\" \"http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd\"";
-
 }

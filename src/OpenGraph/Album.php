@@ -5,9 +5,12 @@ namespace tei187\HTMLBuilder\OpenGraph;
 use DateTime;
 use tei187\HTMLBuilder\Head;
 
+/**
+ * OpenGraph's **og:music** specific tags, for **Album** scope.
+ */
 class Album {
     /**
-     * `og:music:song`
+     * og:music:song
      *
      * @param string|null $title
      * @return string
@@ -16,7 +19,7 @@ class Album {
         return Head::MetaProperty('og:music:song', $title);
     }
     /**
-     * `og:music:song:disc`
+     * og:music:song:disc
      *
      * @param integer|null $disc
      * @return string
@@ -27,7 +30,7 @@ class Album {
         return Head::MetaProperty('og:music:song:disc', $disc);
     }
     /**
-     * `og:music:song:track`
+     * og:music:song:track
      *
      * @param integer|null $track
      * @return string
@@ -38,7 +41,7 @@ class Album {
         return Head::MetaProperty('og:music:song:track', $track);
     }
     /**
-     * `og:music:musician`
+     * og:music:musician
      *
      * @param string|null $musician
      * @return string
@@ -47,7 +50,7 @@ class Album {
         return Head::MetaProperty('og:music:musician', $musician);
     }
     /**
-     * `og:music:release_date`
+     * og:music:release_date
      *
      * @param DateTime|null $date
      * @return string

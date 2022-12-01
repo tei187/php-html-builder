@@ -4,6 +4,9 @@ namespace tei187\HTMLBuilder;
 
 use tei187\HTMLBuilder\Head;
 
+/**
+ * OpenGraph META builder.
+ */
 class OpenGraph {
     /**
      * Custom OpenGraph property.
@@ -17,7 +20,7 @@ class OpenGraph {
     }
 
     /**
-     * `og:title`
+     * og:title
      * 
      * The title of the object as it should appear within the graph, e.g., "The Rock".
      *
@@ -28,7 +31,7 @@ class OpenGraph {
         return Head::MetaProperty('og:title', $title);
     }
     /**
-     * `og:type`
+     * og:type
      * 
      * The type of your object, e.g., "movie".  Depending on the type you specify, other properties may also be required.
      *
@@ -39,7 +42,7 @@ class OpenGraph {
         return Head::MetaProperty('og:type', $type);
     }
     /**
-     * `og:url`
+     * og:url
      * 
      * The canonical URL of your object that will be used as its permanent ID in the graph, e.g., "`http://www.imdb.com/title/tt0117500/`".
      *
@@ -50,7 +53,7 @@ class OpenGraph {
         return Head::MetaProperty('og:url', $url);
     }
     /**
-     * `og:site_name`
+     * og:site_name
      * 
      * If your object is part of a larger web site, the name which should be displayed for the overall site. e.g., "IMDb".
      *
@@ -61,7 +64,7 @@ class OpenGraph {
         return Head::MetaProperty('og:site_name', $name);
     }
     /**
-     * `og:description`
+     * og:description
      * 
      * A one to two sentence description of your object.
      *
@@ -72,7 +75,7 @@ class OpenGraph {
         return Head::MetaProperty('og:description', $desc);
     }
     /**
-     * `og:determiner`
+     * og:determiner
      * 
      * The word to precede the object's title in a sentence (e.g., "the" in "the statue of liberty"). Valid values are "a", "an", "the", "", and "auto".
      *
@@ -83,7 +86,7 @@ class OpenGraph {
         return Head::MetaProperty('og:determiner', $determiner);
     }
     /**
-     * `og:locale`
+     * og:locale
      * 
      * A Unix locale in which this markup is rendered.
      *
@@ -94,7 +97,7 @@ class OpenGraph {
         return Head::MetaProperty('og:locale', $locale);
     }
     /**
-     * `og:locale:alternative`
+     * og:locale:alternative
      *
      * @param string|null $locale
      * @return string
@@ -104,7 +107,7 @@ class OpenGraph {
     }
 
     /**
-     * `og:street_address`
+     * og:street_address
      *
      * @param string|null $address
      * @return string
@@ -113,7 +116,7 @@ class OpenGraph {
         return Head::MetaProperty('og:street_address', $address);
     }
     /**
-     * `og:locality`
+     * og:locality
      *
      * @param string|null $city
      * @return string
@@ -122,7 +125,7 @@ class OpenGraph {
         return Head::MetaProperty('og:locality', $city);
     }
     /**
-     * 'og:region'
+     * og:region
      *
      * @param string|null $content
      * @return string
@@ -131,7 +134,7 @@ class OpenGraph {
         return Head::MetaProperty('og:region', $content);
     }
     /**
-     * `og:postal_code`
+     * og:postal_code
      *
      * @param string|null $content
      * @return string
@@ -140,7 +143,7 @@ class OpenGraph {
         return Head::MetaProperty('og:postal_code', $content);
     }
     /**
-     * `og:country_name`
+     * og:country_name
      *
      * @param string|null $content
      * @return string
@@ -149,7 +152,7 @@ class OpenGraph {
         return Head::MetaProperty('og:country_name', $content);
     }
     /**
-     * `og:email`
+     * og:email
      *
      * @param string|null $content
      * @return string
@@ -158,7 +161,7 @@ class OpenGraph {
         return Head::MetaProperty('og:email', $content);
     }
     /**
-     * `og:phone_number`
+     * og:phone_number
      *
      * @param string|null $content
      * @return string
@@ -167,7 +170,7 @@ class OpenGraph {
         return Head::MetaProperty('og:phone_number', $content);
     }
     /**
-     * `og:fax_number`
+     * og:fax_number
      *
      * @param string|null $content
      * @return string
@@ -177,7 +180,7 @@ class OpenGraph {
     }
 
     /**
-     * `og:latitude`
+     * og:latitude
      *
      * @param float|string|integer|null $latitude
      * @return void
@@ -186,7 +189,7 @@ class OpenGraph {
         return Head::MetaProperty('og:latitude', $latitude);
     }
     /**
-     * `og:longitude`
+     * og:longitude
      *
      * @param float|string|integer|null $longitude
      * @return void
@@ -196,7 +199,7 @@ class OpenGraph {
     }
 
     /**
-     * `og:points`
+     * og:points
      *
      * @param string|null $content
      * @return string
@@ -207,7 +210,7 @@ class OpenGraph {
 
     /* MUSIC - PLAYLIST / RADIO STATION SCOPE */
     /**
-     * `og:music:creator`
+     * og:music:creator
      *
      * @param string|null $creator
      * @return string
@@ -216,7 +219,7 @@ class OpenGraph {
         return Head::MetaProperty('og:music:creator', $creator);
     }
     /**
-     * `og:music:creator`
+     * og:music:creator
      *
      * @param string|null $creator
      * @return string

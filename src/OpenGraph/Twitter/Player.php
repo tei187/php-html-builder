@@ -8,7 +8,7 @@ use tei187\HTMLBuilder\OpenGraph\Twitter;
 
 class Player {
     /**
-     * `twitter:player`
+     * twitter:player
      *
      * HTTPS URL to iFrame player. This must be a HTTPS URL which does not generate active mixed content warnings in a web browser. The audio or video player must not require plugins such as Adobe Flash.
      * 
@@ -19,7 +19,7 @@ class Player {
         return Head::MetaProperty('twitter:player', $player);
     }
     /**
-     * `twitter:player:width`
+     * twitter:player:width
      *
      * Width of iFrame specified in twitter:player in pixels.
      * 
@@ -30,7 +30,7 @@ class Player {
         return Head::MetaProperty('twitter:player:width', $width);
     }
     /**
-     * `twitter:player:height`
+     * twitter:player:height
      *
      * Height of iFrame specified in twitter:player in pixels.
      * 
@@ -41,7 +41,7 @@ class Player {
         return Head::MetaProperty('twitter:player:height', $height);
     }
     /**
-     * `twitter:image`
+     * twitter:image
      *
      * Image to be displayed in place of the player on platforms that don’t support iFrames or inline players. You should make this image the same dimensions as your player. Images with fewer than 68,600 pixels (a 262x262 square image, or a 350x196 16:9 image) will cause the player card not to render. Images must be less than 5MB in size. JPG, PNG, WEBP and GIF formats are supported. Only the first frame of an animated GIF will be used. SVG is not supported.
      * 
@@ -52,7 +52,7 @@ class Player {
         return Twitter::Image($image);
     }
     /**
-     * `twitter:player:stream`
+     * twitter:player:stream
      *
      * URL to raw video or audio stream.
      * 

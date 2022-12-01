@@ -5,9 +5,12 @@ namespace tei187\HTMLBuilder\OpenGraph;
 use DateTime;
 use tei187\HTMLBuilder\Head;
 
+/**
+ * OpenGraph's **og:book** specific tags.
+ */
 class Book {
     /**
-     * `og:book:author`
+     * og:book:author
      *
      * @param string|null $author
      * @return string
@@ -16,7 +19,7 @@ class Book {
         return Head::MetaProperty('og:book:author', $author);
     }
     /**
-     * `og:book:release_date`
+     * og:book:release_date
      *
      * @param DateTime|null $date
      * @return string
@@ -25,7 +28,7 @@ class Book {
         return Head::MetaProperty('og:book:release_date', $date);
     }
     /**
-     * `og:book:isbn`
+     * og:book:isbn
      *
      * @param string|null $isbn
      * @return string
@@ -34,7 +37,7 @@ class Book {
         return Head::MetaProperty('og:book:isbn', $isbn);
     }
     /**
-     * `og:book:tag`
+     * og:book:tag
      *
      * @param string|null $tag
      * @return string

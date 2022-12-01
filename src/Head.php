@@ -8,7 +8,7 @@ use tei187\HTMLBuilder\Constants\Charset;
 use tei187\Utilities;
 
 /**
- * HEAD element.
+ * Generates HEAD element specific markup.
  */
 class Head {
     use ListableAttributes,

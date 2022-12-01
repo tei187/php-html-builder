@@ -4,9 +4,14 @@ namespace tei187\HTMLBuilder\OpenGraph;
 
 use tei187\HTMLBuilder\Head;
 
+/**
+ * OpenGraph's **og:music** specific tags, for **Song** scope.
+ */
 class Song {
     /**
-     * `og:music:duration`
+     * og:music:duration
+     * 
+     * The play time of the song in seconds.
      *
      * @param integer|null $duration
      * @return string
@@ -17,16 +22,20 @@ class Song {
         return Head::MetaProperty('og:music:duration', $duration);
     }
     /**
-     * `og:music:album`
+     * og:music:album
+     * 
+     * The album which contains this song. This is the URL of a page with og:type music.album. Multiple music:album tags can be specified.
      *
-     * @param string|null $title
+     * @param string|null $album
      * @return string
      */
-    static function MusicSongAlbum(?string $title = null) : string {
-        return Head::MetaProperty('og:music:album', $title);
+    static function MusicSongAlbum(?string $album = null) : string {
+        return Head::MetaProperty('og:music:album', $album);
     }
     /**
-     * `og:music:album:disc`
+     * og:music:album:disc
+     * 
+     * The disc number this song is on within this album (defaults to `1`).
      *
      * @param integer|null $disc
      * @return string
@@ -37,7 +46,9 @@ class Song {
         return Head::MetaProperty('og:music:album:disc', $disc);
     }
     /**
-     * `og:music:album:track`
+     * og:music:album:track
+     * 
+     * The track number of this song on this album.
      *
      * @param integer|null $track
      * @return string
@@ -48,7 +59,9 @@ class Song {
         return Head::MetaProperty('og:music:album:track', $track);
     }
     /**
-     * `og:music:musician`
+     * og:music:musician
+     * 
+     * The artist of this song. This is a URL of a page with og:type profile. Multiple music:musician tags can be specified.
      *
      * @param string|null $musician
      * @return string

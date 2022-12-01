@@ -6,8 +6,9 @@ use tei187\HTMLBuilder\Traits\BootstrapTags;
 use tei187\Utilities;
 
 /**
- * Example:
+ * Bootstrap Navigation builders.
  * 
+ * Example:
  * ```php
  * use tei187\HTMLBuilder\Bootstrap;
  * use tei187\HTMLBuilder\Bootstrap\Nav;
