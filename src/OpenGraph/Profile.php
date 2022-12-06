@@ -15,7 +15,7 @@ class Profile {
      * @param string|null $name
      * @return string
      */
-    static function FirstName(?string $name = null) : string {
+    public static function FirstName(?string $name = null) : string {
         return Head::MetaProperty('og:profile:first_name', $name);
     }
     /**
@@ -24,7 +24,7 @@ class Profile {
      * @param string|null $name
      * @return string
      */
-    static function LastName(?string $name = null) : string {
+    public static function LastName(?string $name = null) : string {
         return Head::MetaProperty('og:profile:last_name', $name);
     }
     /**
@@ -33,7 +33,7 @@ class Profile {
      * @param string|null $username
      * @return string
      */
-    static function Username(?string $username = null) : string {
+    public static function Username(?string $username = null) : string {
         return Head::MetaProperty('og:profile:username', $username);
     }
     /**
@@ -42,7 +42,7 @@ class Profile {
      * @param string|null $gender By OpenGraph documentation should be enum(male,female)
      * @return string
      */
-    static function Gender(?string $gender = null) : string {
+    public static function Gender(?string $gender = null) : string {
         return Head::MetaProperty('og:profile:gender', $gender);
     }
 }

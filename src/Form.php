@@ -10,14 +10,16 @@ use tei187\Utilities;
  * Form-specific basic HTML elements.
  */
 class Form {
-    use ListableAttributes, 
+    use ListableAttributes,
         ClosingTags;
 
     /**
      * @var string[][] Array holding switches, to resolve whether something should be a button or input element.
      */
     static $table = [
-        'input'  => [ "text", "password", "submit", "reset", "radio", "checkbox", "button", "file", "image", "color", "date", "datetime-local", "email", "month", "number", "url", "week", "search", "tel", "hidden" ],
+        'input'  => [ "text", "password", "submit", "reset", "radio", "checkbox", "button",
+                      "file", "image", "color", "date", "datetime-local", "email", "month",
+                      "number", "url", "week", "search", "tel", "hidden" ],
         'button' => [ "button", "submit", "reset" ],
     ];
 
@@ -31,16 +33,16 @@ class Form {
      * @param array|null $attributes Other attributes.
      * @return string
      */
-    static function Button(string $type = 'button', ?string $id = null, ?string $name = null, ?string $content = null, ?array $attributes = []) : string {
-        return 
-            "<button" 
-                . (in_array($type, self::$table['button']) 
+    public static function Button(string $type = 'button', ?string $id = null, ?string $name = null, ?string $content = null, ?array $attributes = []) : string {
+        return
+            "<button"
+                . (in_array($type, self::$table['button'])
                     ? " type='{$type}'" : "")
-                . (!empty($id) 
+                . (!empty($id)
                     ? " id='{$id}'" : "")
-                . (!empty($name) 
+                . (!empty($name)
                     ? " name='{$name}'" : "")
-                . (!empty($attributes) && is_array($attributes) 
+                . (!empty($attributes) && is_array($attributes)
                     ? self::_ListAttributes($attributes, [ 'type', 'id', 'name' ]) : "")
           . ">".$content."</button>";
     }
@@ -53,18 +55,18 @@ class Form {
      * @param array|null $attributes Other attributes.
      * @return string
      */
-    static function Form(?string $method = 'POST', ?string $action = null, ?string $content = null, ?array $attributes = []) : string {
+    public static function Form(?string $method = 'POST', ?string $action = null, ?string $content = null, ?array $attributes = []) : string {
         return
             "<form"
-                . (in_array(strtoupper(trim($method)), [ 'POST', 'GET' ]) 
+                . (in_array(strtoupper(trim($method)), [ 'POST', 'GET' ])
                     ? " method='".strtoupper(trim($method))."'"
                     : " method='POST'")
                 . (!empty($action)
                     ? " action='{$action}'" : null)
-                . (!empty($attributes) && is_array($attributes) 
+                . (!empty($attributes) && is_array($attributes)
                     ? self::_ListAttributes($attributes, [ 'method', 'action' ]) : "")
           . ">" . $content . "</form>";
-    }    
+    }
     /**
      * Input HTML5 element.
      *
@@ -75,18 +77,18 @@ class Form {
      * @param int|float|string|null $value Value attribute.
      * @return string
      */
-    static function Input(string $type = 'text', ?string $id = null, ?string $name = null, ?array $attributes = [], $value = null) : string {
-        return 
-            "<input" 
-                . (in_array($type, self::$table['input']) 
+    public static function Input(string $type = 'text', ?string $id = null, ?string $name = null, ?array $attributes = [], $value = null) : string {
+        return
+            "<input"
+                . (in_array($type, self::$table['input'])
                     ? " type='{$type}'" : "")
-                . (!empty($id) 
+                . (!empty($id)
                     ? " id='{$id}'" : "")
-                . (!empty($name) 
+                . (!empty($name)
                     ? " name='{$name}'" : "")
                 . (!Utilities::empty($value)
                     ? " value='{$value}'" : "")
-                . (!empty($attributes) && is_array($attributes) 
+                . (!empty($attributes) && is_array($attributes)
                     ? self::_ListAttributes($attributes, [ 'type', 'id', 'name', 'value' ]) : "")
           . " />";
     }
@@ -98,12 +100,12 @@ class Form {
      * @param array|null $attributes Other attributes.
      * @return string
      */
-    static function Label(?string $content = null, ?string $for = null, ?array $attributes = []) : string {
-        return 
+    public static function Label(?string $content = null, ?string $for = null, ?array $attributes = []) : string {
+        return
             "<label"
-                . (!empty($for) 
+                . (!empty($for)
                     ? " for='{$for}'" : "")
-                . (!empty($attributes) && is_array($attributes) 
+                . (!empty($attributes) && is_array($attributes)
                     ? self::_ListAttributes($attributes, [ 'for' ]) : "")
           . ">" . $content . "</label>";
     }
@@ -115,8 +117,8 @@ class Form {
      * @param boolean|null $selected Selected control flag.
      * @return string
      */
-    static function Option($key = null, $label = null, ?bool $selected = false) : string {
-        return 
+    public static function Option($key = null, $label = null, ?bool $selected = false) : string {
+        return
             $label == "%%hr%%"
                 ? (
                     "<option disabled style='text-align:left;color:#ddd;padding:0'>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</option>"
@@ -139,14 +141,14 @@ class Form {
      * @param mixed|null $selected Selected id/key.
      * @return string
      */
-    static function OptGroup(?string $label = null, $options = null, $selected = null) : string {
+    public static function OptGroup(?string $label = null, $options = null, $selected = null) : string {
         if(is_array($options)) {
             $optionsArr = [];
             foreach($options as $key => $label) {
-                $optionsArr[] = 
+                $optionsArr[] =
                     Form::Option(
-                        $key, 
-                        $label, 
+                        $key,
+                        $label,
                         ($key == $selected ? true : false
                     )
                 );
@@ -168,14 +170,14 @@ class Form {
      * @param int|float|string|null $content Content.
      * @return string
      */
-    static function Textarea(?string $id = null, ?string $name = null, ?array $attributes = [], $content = null) : string {
-        return 
-            "<textarea" 
-                . (!empty($id) 
+    public static function Textarea(?string $id = null, ?string $name = null, ?array $attributes = [], $content = null) : string {
+        return
+            "<textarea"
+                . (!empty($id)
                     ? " id='{$id}'" : "")
-                . (!empty($name) 
+                . (!empty($name)
                     ? " name='{$name}'" : "")
-                . (!empty($attributes) && is_array($attributes) 
+                . (!empty($attributes) && is_array($attributes)
                     ? self::_ListAttributes($attributes, [ 'type', 'id', 'name', 'value' ]) : "")
           . " />" . (!empty($content) ? $content : "") . "</textarea>";
     }

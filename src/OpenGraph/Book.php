@@ -15,7 +15,7 @@ class Book {
      * @param string|null $author
      * @return string
      */
-    static function Author(?string $author = null) : string {
+    public static function Author(?string $author = null) : string {
         return Head::MetaProperty('og:book:author', $author);
     }
     /**
@@ -24,7 +24,7 @@ class Book {
      * @param DateTime|null $date
      * @return string
      */
-    static function ReleaseDate(?DateTime $date = null) : string {
+    public static function ReleaseDate(?DateTime $date = null) : string {
         return Head::MetaProperty('og:book:release_date', $date);
     }
     /**
@@ -33,7 +33,7 @@ class Book {
      * @param string|null $isbn
      * @return string
      */
-    static function ISBN(?string $isbn = null) : string {
+    public static function ISBN(?string $isbn = null) : string {
         return Head::MetaProperty('og:book:isbn', $isbn);
     }
     /**
@@ -42,7 +42,7 @@ class Book {
      * @param string|null $tag
      * @return string
      */
-    static function Tag(?string $tag = null) : string {
+    public static function Tag(?string $tag = null) : string {
         return Head::MetaProperty('og:book:tag', $tag);
     }
 }

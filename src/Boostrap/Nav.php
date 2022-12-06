@@ -7,21 +7,21 @@ use tei187\Utilities;
 
 /**
  * Bootstrap Navigation builders.
- * 
+ *
  * Example:
  * ```php
  * use tei187\HTMLBuilder\Bootstrap;
  * use tei187\HTMLBuilder\Bootstrap\Nav;
- * 
+ *
  * return
- * Nav::Nav(['class' => "navbar-expand-lg bg-light"], 
+ * Nav::Nav(['class' => "navbar-expand-lg bg-light"],
  *   Bootstrap::ContainerFluid([],
- *     Nav::Navbar([], 
+ *     Nav::Navbar([],
  *       Nav::Item([], Nav::Link([], "Item 1", "#", true) ) .
  *       Nav::Item([], Nav::Link([], "Item 2", "#", false) ) .
- *       Nav::ItemDropdown([], 
- *         Nav::DropdownToggle([], "Toggle dropdown") . 
- *         Nav::DropdownMenu([], 
+ *       Nav::ItemDropdown([],
+ *         Nav::DropdownToggle([], "Toggle dropdown") .
+ *         Nav::DropdownMenu([],
  *           Nav::DropdownItemLink([], "Item 2.1", "#item21") .
  *           Nav::DropdownItemCustom("span", [], "Item 2.2")
  *         )
@@ -41,17 +41,17 @@ class Nav {
      * @param string|null $content
      * @return string
      */
-    static function Nav(array $attributes = [], ?string $content = null) : string {
+    public static function Nav(array $attributes = [], ?string $content = null) : string {
         return self::_PairedBootstrapTags('nav', 'navbar', $content, $attributes, []);
     }
     /**
      * UL.navbar-nav
-     * 
+     *
      * @param array|null $attributes
      * @param string|null $content
      * @return string
      */
-    static function Navbar(array $attributes = [], ?string $content = null) : string {
+    public static function Navbar(array $attributes = [], ?string $content = null) : string {
         return self::_PairedBootstrapTags('ul', 'navbar-nav', $content, $attributes, []);
     }
     /**
@@ -62,13 +62,13 @@ class Nav {
      * @param boolean $dropdown Mark as dropdown container.
      * @return string
      */
-    static function Item(array $attributes = [], ?string $content = null, bool $dropdown = false) : string {
+    public static function Item(array $attributes = [], ?string $content = null, bool $dropdown = false) : string {
         return self::_PairedBootstrapTags(
-            'li', 
-            'nav-item' 
-                . ( $dropdown ? " dropdown" : "" ), 
-            $content, 
-            $attributes, 
+            'li',
+            'nav-item'
+                . ( $dropdown ? " dropdown" : "" ),
+            $content,
+            $attributes,
             []
         );
     }
@@ -79,7 +79,7 @@ class Nav {
      * @param string|null $content
      * @return string
      */
-    static function ItemDropdown(array $attributes = [], ?string $content = null) : string {
+    public static function ItemDropdown(array $attributes = [], ?string $content = null) : string {
         return self::Item($attributes, $content, true);
     }
     /**
@@ -91,18 +91,18 @@ class Nav {
      * @param boolean $active FALSE by default.
      * @return string
      */
-    static function Link(array $attributes = [], ?string $content = null, ?string $href = "#", bool $active = false, bool $dropdownToggle = false) : string {
-        $href = 
+    public static function Link(array $attributes = [], ?string $content = null, ?string $href = "#", bool $active = false, bool $dropdownToggle = false) : string {
+        $href =
             Utilities::empty($href)
                 ? "#"
                 : $href;
 
         return self::_PairedBootstrapTags(
-            'a', 
-            'nav-link' 
+            'a',
+            'nav-link'
                 . ( $active ? " active" : "" )
                 . ( $dropdownToggle ? " dropdown-toggle" : "" ),
-            $content, 
+            $content,
             array_merge($attributes, [ 'href' => $href ]),
             []
         );
@@ -114,16 +114,16 @@ class Nav {
      * @param string|null $content
      * @return string
      */
-    static function DropdownToggle(array $attributes = [], ?string $content = null) : string {
+    public static function DropdownToggle(array $attributes = [], ?string $content = null) : string {
         return self::Link(
             array_merge(
-                $attributes, 
-                [ 'role' => "button", 
+                $attributes,
+                [ 'role' => "button",
                   'data-bs-toggle' => "dropdown" ]
             ),
-            $content, 
-            "#", 
-            false, 
+            $content,
+            "#",
+            false,
             true
         );
     }
@@ -134,8 +134,8 @@ class Nav {
      * @param array|string|null $content String or array with items from method ::NavbarDropdownItemLink or ::NavbarDropdownItemCustom.
      * @return string
      */
-    static function DropdownMenu(array $attributes = [], $content = null) : string {
-        $content = 
+    public static function DropdownMenu(array $attributes = [], $content = null) : string {
+        $content =
             is_array($content)
                 ? implode("", $content)
                 : $content;
@@ -150,8 +150,8 @@ class Nav {
      * @param string $href
      * @return string
      */
-    static function DropdownItemLink(array $attributes = [], ?string $content = null, ?string $href = "#") : string {
-        $href = 
+    public static function DropdownItemLink(array $attributes = [], ?string $content = null, ?string $href = "#") : string {
+        $href =
             Utilities::empty($href)
                 ? "#"
                 : $href;
@@ -164,9 +164,9 @@ class Nav {
      * @param string $tag
      * @param array $attributes
      * @param string|null $content
-     * @return string 
+     * @return string
      */
-    static function DropdownItemCustom(string $tag, array $attributes = [], ?string $content = null) : string {
+    public static function DropdownItemCustom(string $tag, array $attributes = [], ?string $content = null) : string {
         return "<li>".self::_PairedBootstrapTags($tag, "dropdown-item", $content, $attributes, [])."</li>";
     }
 }

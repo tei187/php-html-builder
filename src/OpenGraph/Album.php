@@ -15,7 +15,7 @@ class Album {
      * @param string|null $title
      * @return string
      */
-    static function MusicAlbumSong(?string $title = null) : string {
+    public static function MusicAlbumSong(?string $title = null) : string {
         return Head::MetaProperty('og:music:song', $title);
     }
     /**
@@ -24,7 +24,7 @@ class Album {
      * @param integer|null $disc
      * @return string
      */
-    static function MusicAlbumSongDisc(?int $disc = 1) : string {
+    public static function MusicAlbumSongDisc(?int $disc = 1) : string {
         if($disc == null || $disc < 1) $disc = 1;
 
         return Head::MetaProperty('og:music:song:disc', $disc);
@@ -35,7 +35,7 @@ class Album {
      * @param integer|null $track
      * @return string
      */
-    static function MusicAlbumSongTrack(?int $track = 1) : string {
+    public static function MusicAlbumSongTrack(?int $track = 1) : string {
         if($track == null || $track < 1) $track = 1;
 
         return Head::MetaProperty('og:music:song:track', $track);
@@ -46,7 +46,7 @@ class Album {
      * @param string|null $musician
      * @return string
      */
-    static function MusicAlbumMusician(?string $musician = null) : string {
+    public static function MusicAlbumMusician(?string $musician = null) : string {
         return Head::MetaProperty('og:music:musician', $musician);
     }
     /**
@@ -55,7 +55,7 @@ class Album {
      * @param DateTime|null $date
      * @return string
      */
-    static function MusicAlbumReleaseDate(?DateTime $date = null) : string {
+    public static function MusicAlbumReleaseDate(?DateTime $date = null) : string {
         return Head::MetaProperty('og:music:release_date', $date);
     }
 }

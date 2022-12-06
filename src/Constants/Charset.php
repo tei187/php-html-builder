@@ -5,7 +5,7 @@ namespace tei187\HTMLBuilder\Constants;
 /**
  * Charset helpers.
  */
-Class Charset{
+class Charset{
     const UTF8 =                "UTF-8";
     const UTF16 =               "UTF-16";
 

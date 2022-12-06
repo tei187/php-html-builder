@@ -21,11 +21,14 @@ class Head {
      * @param string|null $target
      * @return string
      */
-    static function Base(?string $href = null, ?string $target = null) : string {
+    public static function Base(?string $href = null, ?string $target = null) : string {
         return
             Utilities::empty([$href, $target], true)
                 ? ""
-                : self::_SelfClosingTag('base', Utilities::array_filter_recursive(['href' => $href, 'target' => 'target']));
+                : self::_SelfClosingTag(
+                    'base',
+                    Utilities::array_filter_recursive(['href' => $href, 'target' => 'target'])
+                  );
     }
     /**
      * Outputs HEAD's META element with `charset`.
@@ -33,15 +36,14 @@ class Head {
      * @param string|null $content
      * @return string
      */
-    static function Charset(?string $content = Charset::UTF8) : string {
-        //return self::Meta([], "charset", $content);
-        return 
+    public static function Charset(?string $content = Charset::UTF8) : string {
+        return
             self::Meta(
                 null,
                 null,
                 [
-                    'charset' => 
-                        ( Utilities::empty($content, true) 
+                    'charset' =>
+                        ( Utilities::empty($content, true)
                             ? Charset::UTF8
                             : $content )
                 ]
@@ -53,7 +55,7 @@ class Head {
      * @param string|null $content
      * @return string
      */
-    static function Head(?string $content = null) : string {
+    public static function Head(?string $content = null) : string {
         return self::_PairedTags("head", $content);
     }
     /**
@@ -63,14 +65,14 @@ class Head {
      * @param array|null $attributes
      * @return string
      */
-    static function Icon(?string $href = null, ?array $attributes = []) : string {
-        return 
+    public static function Icon(?string $href = null, ?array $attributes = []) : string {
+        return
             self::Link(
                 array_merge(
                     [
-                        'rel' => 'icon', 
+                        'rel' => 'icon',
                         'href' => $href
-                    ], 
+                    ],
                     $attributes
                 )
             );
@@ -81,8 +83,8 @@ class Head {
      * @param array|null $attributes
      * @return string
      */
-    static function Link(?array $attributes = []) : string {
-        return 
+    public static function Link(?array $attributes = []) : string {
+        return
             (Utilities::empty($attributes, true))
                 ? ""
                 : self::_SelfClosingTag('link', $attributes);
@@ -95,22 +97,22 @@ class Head {
      * @param array|null $attributes
      * @return string
      */
-    static function Meta(?string $name = null, ?string $content = null, ?array $attributes = []) : string {
-        return 
+    public static function Meta(?string $name = null, ?string $content = null, ?array $attributes = []) : string {
+        return
             self::_SelfClosingTag(
-                'meta', 
+                'meta',
                 array_merge(
                     Utilities::array_filter_recursive(
                         [
-                            'name' => $name, 
+                            'name' => $name,
                             'content' => $content
                         ]
-                    ), 
+                    ),
                     $attributes
                 )
             );
     }
-    static function MetaProperty(?string $property = null, ?string $content = null) : string {
+    public static function MetaProperty(?string $property = null, ?string $content = null) : string {
         return self::_SelfClosingTag('meta', ['property' => $property, 'content' => $content]);
     }
     /**
@@ -121,17 +123,17 @@ class Head {
      * @param array|null $attributes
      * @return string
      */
-    static function StyleSheet(?string $href = null, ?string $media = null, ?array $attributes = []) : string {
-        return 
+    public static function StyleSheet(?string $href = null, ?string $media = null, ?array $attributes = []) : string {
+        return
             self::Link(
                 array_merge(
                     Utilities::array_filter_recursive(
                         [
-                            'rel' => 'stylesheet', 
-                            'media' => $media, 
+                            'rel' => 'stylesheet',
+                            'media' => $media,
                             'href' => $href
                         ]
-                    ), 
+                    ),
                     $attributes
                 )
             );
@@ -144,11 +146,11 @@ class Head {
      * @param array|null $attributes
      * @return string
      */
-    static function StyleString(?string $content = null, ?string $media = null, ?array $attributes = []) : string {
-        return 
+    public static function StyleString(?string $content = null, ?string $media = null, ?array $attributes = []) : string {
+        return
             self::_PairedTags(
-                'style', 
-                $content, 
+                'style',
+                $content,
                 array_merge(
                     Utilities::array_filter_recursive([ 'media' => $media ]),
                     $attributes
@@ -162,7 +164,7 @@ class Head {
      * @param array|null $attributes
      * @return string
      */
-    static function Title(?string $title = null, ?array $attributes = []) : string {
+    public static function Title(?string $title = null, ?array $attributes = []) : string {
         return self::_PairedTags('title', $title, $attributes);
     }
     /**
@@ -170,7 +172,7 @@ class Head {
      * @param string|null $content
      * @return string
      */
-    static function Viewport(?string $content = "width=device-width, initial-scale=1") : string {
+    public static function Viewport(?string $content = "width=device-width, initial-scale=1") : string {
         return self::Meta("viewport", $content, []);
     }
 }

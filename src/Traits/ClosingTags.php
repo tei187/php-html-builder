@@ -17,12 +17,14 @@ trait ClosingTags {
      * @param array $limit
      * @return string
      */
-    static private function _PairedTags(string $tag, $content = null, array $attributes = [], array $limit = []) : string {
-        $o = "";
-        foreach($attributes as $attr => $value) 
-            if(!in_array($attr, $limit))
-                $o .= " ".strtolower($attr)."='".htmlentities($value)."'";
-        return 
+    private static function _PairedTags(string $tag, $content = null, array $attributes = [], array $limit = []) : string {
+        /*
+            $o = "";
+            foreach($attributes as $attr => $value)
+                if(!in_array($attr, $limit))
+                    $o .= " ".strtolower($attr)."='".htmlentities($value)."'";
+        */
+        return
             "<{$tag}" .
                 self::_ListAttributes($attributes, $limit) .
             ">" . PHP_EOL . "{$content}". PHP_EOL . "</{$tag}>" . PHP_EOL;
@@ -35,7 +37,7 @@ trait ClosingTags {
      * @param array|null $limit
      * @return string
      */
-    static private function _SelfClosingTag(string $tag, ?array $attributes = [], ?array $limit = []) : string {
+    private static function _SelfClosingTag(string $tag, ?array $attributes = [], ?array $limit = []) : string {
         return
             "<{$tag}" .
                 self::_ListAttributes($attributes, $limit) .

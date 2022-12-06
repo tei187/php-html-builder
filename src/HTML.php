@@ -22,7 +22,7 @@ class HTML {
      * @param string|null $content
      * @return string
      */
-    static function Body(?array $attributes = [], ?string $content = null) : string {
+    public static function Body(?array $attributes = [], ?string $content = null) : string {
         return self::_PairedTags('body', $content, $attributes, []);
     }
     /**
@@ -33,11 +33,11 @@ class HTML {
      * @param array|null $attributes
      * @return void
      */
-    static function Details($summary = null, $content = null, ?array $attributes = []) {
-        return 
+    public static function Details($summary = null, $content = null, ?array $attributes = []) {
+        return
             self::_PairedTags(
-                "details", 
-                self::_PairedTags("summary", $summary, [], []) . $content, 
+                "details",
+                self::_PairedTags("summary", $summary, [], []) . $content,
                 $attributes
             );
     }
@@ -48,16 +48,19 @@ class HTML {
      * @param string|null $content
      * @return string
      */
-    static function Div(?array $attributes = [], ?string $content = null) : string {
+    public static function Div(?array $attributes = [], ?string $content = null) : string {
         return self::_PairedTags('div', $content, $attributes, []);
     }
     /**
      * Renders !DOCTYPE.
      *
-     * @param string|null $type Accepts string or flag: `DOCTYPE_HTML5`, `DOCTYPE_HTML4_STRICT`, `DOCTYPE_HTML4_TRANSITIONAL`, `DOCTYPE_HTML4_FRAMESET`, `DOCTYPE_XHTML1_STRICT`, `DOCTYPE_XHTML1_TRANSITIONAL`, `DOCTYPE_XHTML1_FRAMESET`, `DOCTYPE_XHTML1_BASIC`, `DOCTYPE_XHTML11`, `DOCTYPE_XHTML11_BASIC`, `DOCTYPE_XHTML_MATHML_SVG`;
+     * @param string|null $type Accepts string or flag: `DOCTYPE_HTML5`, `DOCTYPE_HTML4_STRICT`,
+     * `DOCTYPE_HTML4_TRANSITIONAL`, `DOCTYPE_HTML4_FRAMESET`, `DOCTYPE_XHTML1_STRICT`,
+     * `DOCTYPE_XHTML1_TRANSITIONAL`, `DOCTYPE_XHTML1_FRAMESET`, `DOCTYPE_XHTML1_BASIC`,
+     * `DOCTYPE_XHTML11`, `DOCTYPE_XHTML11_BASIC`, `DOCTYPE_XHTML_MATHML_SVG`;
      * @return string
      */
-    static function Doctype(?string $type = Doctype::HTML5) : string {
+    public static function Doctype(?string $type = Doctype::HTML5) : string {
         return "<!DOCTYPE ". (Utilities::empty($type, true) ? Doctype::HTML5 : $type) . ">";
     }
     /**
@@ -66,7 +69,7 @@ class HTML {
      * @param string|null $content
      * @return string
      */
-    static function Head(?string $content = null) : string {
+    public static function Head(?string $content = null) : string {
         return Head::Head($content);
     }
     /**
@@ -77,17 +80,17 @@ class HTML {
      * @param string|null $content
      * @return string
      */
-    static function Heading(int $level = 1, ?array $attributes = [], ?string $content = null) : string {
-        $level = 
+    public static function Heading(int $level = 1, ?array $attributes = [], ?string $content = null) : string {
+        $level =
             $level > 6
                 ? 6 : $level;
-        $level = 
+        $level =
             $level < 1
                 ? 1 : $level;
 
-        return 
+        return
             "<h" . $level
-                . (!empty($attributes) && is_array($attributes) 
+                . (!empty($attributes) && is_array($attributes)
                     ? self::_ListAttributes($attributes, []) : "")
           . ">" . $content . "</h" . $level . ">";
     }
@@ -97,7 +100,7 @@ class HTML {
      * @param array|null $attributes
      * @return string
      */
-    static function Hr(?array $attributes = []) : string {
+    public static function Hr(?array $attributes = []) : string {
         return self::_SelfClosingTag('hr', $attributes, []);
     }
     /**
@@ -107,7 +110,7 @@ class HTML {
      * @param string|null $content
      * @return string
      */
-    static function Html(?array $attributes = [], ?string $content = null) : string {
+    public static function Html(?array $attributes = [], ?string $content = null) : string {
         return self::_PairedTags('html', $content, $attributes, []);
     }
     /**
@@ -117,11 +120,11 @@ class HTML {
      * @param string|null $source
      * @return string
      */
-    static function Image(?array $attributes = [], ?string $source) : string {
+    public static function Image(?array $attributes = [], ?string $source) : string {
         return self::_SelfClosingTag(
-            "img", 
+            "img",
             array_merge(
-                [ 'src' => $source ], 
+                [ 'src' => $source ],
                 $attributes
             )
         );
@@ -134,14 +137,14 @@ class HTML {
      * @param string|null $content
      * @return string
      */
-    static function Link(?string $href = null, array $attributes = [], ?string $content = null) : string {
+    public static function Link(?string $href = null, array $attributes = [], ?string $content = null) : string {
         return self::_PairedTags(
-            'a', 
-            $content, 
+            'a',
+            $content,
             array_merge(
                 ['href' => $href],
                 $attributes
-            ), 
+            ),
             []
         );
     }
@@ -153,18 +156,19 @@ class HTML {
      * @param string|array|null $content Two-value array, `0` being array with attributes, `1` being content.
      * @return string
      */
-    static function List(?string $type = "ul", ?array $attributes = [], $content = []) : string {
+    public static function List(?string $type = "ul", ?array $attributes = [], $content = []) : string {
         $items = "";
-        foreach($content as $item)
+        foreach($content as $item) {
             if(is_string($item)) {
                 $items .= $item;
             } elseif (is_array($item)) {
                 $items .= self::ListItem($item[0], $item[1]);
             }
+        }
         return
             self::_PairedTags($type, $items, $attributes, []);
     }
-    static function ListItem(?array $attributes = null, ?string $content = null) : string {
+    public static function ListItem(?array $attributes = null, ?string $content = null) : string {
         return
             self::_PairedTags("li", $content, $attributes, []);
     }
@@ -175,7 +179,7 @@ class HTML {
      * @param string|null $content
      * @return string
      */
-    static function Paragraph(?array $attributes = [], ?string $content = null) : string {
+    public static function Paragraph(?array $attributes = [], ?string $content = null) : string {
         return self::_PairedTags('p', $content, $attributes, []);
     }
     /**
@@ -187,7 +191,7 @@ class HTML {
      * @param string|null $content
      * @return string
      */
-    static function Script(?array $attributes, ?string $source = null, ?string $type = null, ?string $content = null) : string {
+    public static function Script(?array $attributes, ?string $source = null, ?string $type = null, ?string $content = null) : string {
         foreach(['src' => $source, 'type' => $type] as $attr => $value) {
             !Utilities::empty($value)
                 ? $attributes[$attr] = $value
@@ -203,7 +207,7 @@ class HTML {
      * @param string|null $content
      * @return string
      */
-    static function Span(?array $attributes = [], ?string $content = null) : string {
+    public static function Span(?array $attributes = [], ?string $content = null) : string {
         return self::_PairedTags('span', $content, $attributes, []);
     }
     /**
@@ -213,7 +217,7 @@ class HTML {
      * @param string|null $content
      * @return string
      */
-    static function Table(?array $attributes = null, ?string $content = null) : string {
+    public static function Table(?array $attributes = null, ?string $content = null) : string {
         return self::_PairedTags("table", $content, $attributes, []);
     }
     /**
@@ -223,7 +227,7 @@ class HTML {
      * @param string|null $content
      * @return string
      */
-    static function TableCell(?array $attributes = null, ?string $content = null) : string {
+    public static function TableCell(?array $attributes = null, ?string $content = null) : string {
         return self::_PairedTags("td", $content, $attributes);
     }
     /**
@@ -233,7 +237,7 @@ class HTML {
      * @param string|null $content
      * @return string
      */
-    static function TableHeadingCell(?array $attributes = null, ?string $content = null) : string {
+    public static function TableHeadingCell(?array $attributes = null, ?string $content = null) : string {
         return self::_PairedTags("th", $content, $attributes);
     }
     /**
@@ -243,7 +247,7 @@ class HTML {
      * @param array|string|null $cells
      * @return string
      */
-    static function TableRow(?array $attributes = null, $cells = null) : string {
+    public static function TableRow(?array $attributes = null, $cells = null) : string {
         $cellsHtml = "";
         if(is_array($cells)) {
             foreach($cells as $cell) {
@@ -263,17 +267,18 @@ class HTML {
      *
      * @param string $tag Tag name.
      * @param array|null $attributes Attributes.
-     * @param boolean|string $content If `false`, tag is treated as self-closing tag. If a `string` is passed, it's treated as paired tag.
+     * @param boolean|string $content If `false`, tag is treated as self-closing tag.
+     * If a `string` is passed, it's treated as paired tag.
      * @return string
      */
-    static function Custom(string $tag, ?array $attributes = [], $content = false) : string {
-        return 
+    public static function Custom(string $tag, ?array $attributes = [], $content = false) : string {
+        return
             "<" . $tag
-                . (!empty($attributes) && is_array($attributes) 
+                . (!empty($attributes) && is_array($attributes)
                     ? self::_ListAttributes($attributes, []) : "")
             . (is_bool($content) && !$content
                 ? " />"
-                : ">" . $content . "</".$tag.">");           
+                : ">" . $content . "</".$tag.">");
     }
 
     /* ALIASES */
@@ -286,7 +291,7 @@ class HTML {
      * @param array|null $attributes
      * @return void
      */
-    static function a(?string $content = null, ?string $href = null, ?array $attributes = []) : string {
+    public static function a(?string $content = null, ?string $href = null, ?array $attributes = []) : string {
         return self::Link($content, $attributes, $href);
     }
     /**
@@ -297,7 +302,7 @@ class HTML {
      * @param array|null $attributes
      * @return string
      */
-    static function h(int $level = 1, ?string $content = null, ?array $attributes = []) : string {
+    public static function h(int $level = 1, ?string $content = null, ?array $attributes = []) : string {
         return self::Heading($level, $content, $attributes);
     }
     /**
@@ -307,7 +312,7 @@ class HTML {
      * @param array|null $attributes
      * @return string
      */
-    static function img(?string $source, ?array $attributes = []) : string {
+    public static function img(?string $source, ?array $attributes = []) : string {
         return self::Image($source, $attributes);
     }
     /**
@@ -317,7 +322,7 @@ class HTML {
      * @param string|null $content
      * @return string
      */
-    static function p(?array $attributes = [], ?string $content = null) : string {
+    public static function p(?array $attributes = [], ?string $content = null) : string {
         return self::Paragraph($attributes, $content);
     }
     /**
@@ -327,7 +332,7 @@ class HTML {
      * @param array|null $attributes
      * @return string
      */
-    static function ol(?string $content = null, ?array $attributes = []) : string {
+    public static function ol(?string $content = null, ?array $attributes = []) : string {
         return self::List("ol", $attributes, $content);
     }
     /**
@@ -337,7 +342,7 @@ class HTML {
      * @param array|null $attributes
      * @return string
      */
-    static function ul(?string $content = null, ?array $attributes = []) : string {
+    public static function ul(?string $content = null, ?array $attributes = []) : string {
         return self::List("ul", $attributes, $content);
     }
 }

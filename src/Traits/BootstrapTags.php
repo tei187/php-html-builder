@@ -12,7 +12,7 @@ trait BootstrapTags {
 
     /**
      * Default paired tags for Bootstrap.
-     * 
+     *
      * @param string $tag Opening tag.
      * @param string $defaultClass Bootstrap-relevant class.
      * @param string|null $content Between tags.
@@ -20,11 +20,11 @@ trait BootstrapTags {
      * @param array|null $limit ?
      * @return string
      */
-    static function _PairedBootstrapTags(string $tag, string $defaultClass, ?string $content = null, array $attributes = [], array $limit = []) : string {
+    public static function _PairedBootstrapTags(string $tag, string $defaultClass, ?string $content = null, array $attributes = [], array $limit = []) : string {
         return
             "<{$tag} class='{$defaultClass}"
                 . (isset($attributes['class'])
-                    ? " " . $attributes['class'] . "'" 
+                    ? " " . $attributes['class'] . "'"
                     : "'")
                 . self::_ListAttributes($attributes, array_merge($limit, [ 'class' ]))
                 . ">".$content."</{$tag}>" . PHP_EOL;
