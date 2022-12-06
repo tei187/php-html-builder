@@ -175,4 +175,26 @@ class Head {
     public static function Viewport(?string $content = "width=device-width, initial-scale=1") : string {
         return self::Meta("viewport", $content, []);
     }
+
+    /**
+     * Outputs HEAD's META element, with `http-quiv="X-UA-Compatible"` and specified `content`.
+     *
+     * @param string|null $content By default `"IE=Eedge"`. Suggested one of the following:
+     * * `"IE=edge"` 
+     * * `"IE=11"`
+     * * `"IE=EmulateIE11"`
+     * * `"IE=10"`
+     * * `"IE=EmulateIE10"`
+     * * `"IE=9"`
+     * * `"IE=EmulateIE9`
+     * * `"IE=8"`
+     * * `"IE=EmulateIE8"`
+     * * `"IE=7"`
+     * * `"IE=EmulateIE7"`
+     * * `"IE=5"`
+     * @return string
+     */
+    public static function XUACompatible(?string $content = "IE=Edge") : string {
+        return HTML::Custom('meta', [ 'http-equiv' => "X-UA-Compatbile", 'content' => $content ]);
+    }
 }
