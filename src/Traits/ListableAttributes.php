@@ -2,6 +2,8 @@
 
 namespace tei187\HTMLBuilder\Traits;
 
+use tei187\Utilities;
+
 /**
  * Tag attribute sorter and checker.
  */
@@ -21,8 +23,11 @@ trait ListableAttributes {
 
         $o = null;
         foreach($attributes as $attr => $value) {
-            if(!in_array($attr, $limit))
-                $o .= " ".strtolower($attr)."='".htmlentities($value)."'";
+            if(!in_array($attr, $limit)) {
+                Utilities::Empty($value)
+                    ? $o .= " ".strtolower($attr)."='".htmlentities($value)."'"
+                    : $o .= " ".strtolower($attr);
+            }
         }
         return $o;
     }
