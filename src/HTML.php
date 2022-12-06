@@ -186,19 +186,38 @@ class HTML {
      * Script render.
      *
      * @param array|null $attributes
-     * @param string|null $source
      * @param string|null $type
      * @param string|null $content
      * @return string
      */
-    public static function Script(?array $attributes, ?string $source = null, ?string $type = null, ?string $content = null) : string {
+    public static function Script(?array $attributes, ?string $type = null, ?string $content = null) : string {
+        !Utilities::empty($type)
+            ? $attributes['type'] = $type
+            : null;
+
+        return self::_PairedTags("script", $content, $attributes);
+    }
+    /**
+     * Script render with source.
+     *
+     * @param array|null $attributes
+     * @param string|null $source
+     * @param string|null $type
+     * @param bool $async
+     * @param bool $deffer
+     * @param string|null $content
+     * @return string
+     */
+    public static function ScriptSrc(?array $attributes, ?string $source = null, bool $async = false, bool $deffer = false, ?string $type = null) : string {
         foreach(['src' => $source, 'type' => $type] as $attr => $value) {
             !Utilities::empty($value)
                 ? $attributes[$attr] = $value
                 : null;
         }
+        if($async)  $attributes['async']  = null;
+        if($deffer) $attributes['deffer'] = null;
 
-        return self::_PairedTags("script", $content, $attributes);
+        return self::_PairedTags("script", null, $attributes);
     }
     /**
      * Span render.
