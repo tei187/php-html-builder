@@ -18,15 +18,14 @@ trait ListableAttributes {
      * @return string
      */
     private static function _ListAttributes(array $attributes, array $limit = []) : ?string {
-        if(empty($attributes))
-            return "";
+        $attributes = self::_RetypeAttributes($attributes);
 
         $o = null;
         foreach($attributes as $attr => $value) {
             if(!in_array($attr, $limit)) {
-                Utilities::Empty($value)
-                    ? $o .= " ".strtolower($attr)."='".htmlentities($value)."'"
-                    : $o .= " ".strtolower($attr);
+                Utilities::empty($value)
+                    ? $o .= " ".strtolower($attr)
+                    : $o .= " ".strtolower($attr)."='".htmlentities($value)."'";
             }
         }
         return $o;
