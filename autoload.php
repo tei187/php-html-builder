@@ -11,6 +11,7 @@
     require_once __DIR__ . "/src/Traits/ListableAttributes.php";
     require_once __DIR__ . "/src/Traits/ClosingTags.php";
     require_once __DIR__ . "/src/Traits/BootstrapTags.php";
+    require_once __DIR__ . "/src/Traits/Bootstrap/LineBreak.php";
 
 // GENERATORS
     // general HTML
@@ -21,6 +22,7 @@
     // Bootstrap
         require_once __DIR__ . "/src/Bootstrap.php";
         require_once __DIR__ . "/src/Boostrap/Nav.php";
+        require_once __DIR__ . "/src/Boostrap/Col.php";
 
     // OpenGraph
         require_once __DIR__ . "/src/OpenGraph.php";
