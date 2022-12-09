@@ -96,7 +96,10 @@ class Bootstrap {
      */
     public static function Row(array $attributes = [], ?string $content = null, bool $gutters = true) : string {
         !$gutters
-            ? $attributes['class'] .= ' no-gutters'
+            ? (key_exists('class', $attributes)
+                ? $attributes['class'] .= ' no-gutters'
+                : $attributes['class'] = 'no-gutters'
+              )
             : null;
 
         return self::_PairedBootstrapTags('div', 'row', $content, $attributes, []);
