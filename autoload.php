@@ -18,6 +18,7 @@
         require_once __DIR__ . "/src/HTML.php";
         require_once __DIR__ . "/src/Head.php";
         require_once __DIR__ . "/src/Form.php";
+        require_once __DIR__ . "/src/Table.php";
 
     // Bootstrap
         require_once __DIR__ . "/src/Bootstrap.php";
