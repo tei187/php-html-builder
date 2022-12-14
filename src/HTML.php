@@ -158,11 +158,15 @@ class HTML {
      */
     public static function List(?string $type = "ul", ?array $attributes = [], $content = []) : string {
         $items = "";
-        foreach($content as $item) {
-            if(is_string($item)) {
-                $items .= $item;
-            } elseif (is_array($item)) {
-                $items .= self::ListItem($item[0], $item[1]);
+        if(is_string($content)) {
+            $items = $content;
+        } else {
+            foreach($content as $item) {
+                if(is_string($item)) {
+                    $items .= $item;
+                } elseif (is_array($item)) {
+                    $items .= self::ListItem($item[0], $item[1]);
+                }
             }
         }
         return
