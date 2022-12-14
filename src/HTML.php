@@ -31,9 +31,9 @@ class HTML {
      * @param mixed|null $summary
      * @param mixed|null $content
      * @param array|null $attributes
-     * @return void
+     * @return string
      */
-    public static function Details($summary = null, $content = null, ?array $attributes = []) {
+    public static function Details($summary = null, $content = null, ?array $attributes = []) : string {
         return
             self::_PairedTags(
                 "details",
