@@ -235,6 +235,8 @@ class HTML {
      * @param array|null $attributes
      * @param string|null $content
      * @return string
+     * 
+     * @deprecated 1.0 Use \tei187\HTMLBuilder\Table instead
      */
     public static function Table(?array $attributes = null, ?string $content = null) : string {
         return self::_PairedTags("table", $content, $attributes, []);
@@ -245,6 +247,8 @@ class HTML {
      * @param array|null $attributes
      * @param string|null $content
      * @return string
+     * 
+     * @deprecated 1.0 Use \tei187\HTMLBuilder\Table instead
      */
     public static function TableCell(?array $attributes = null, ?string $content = null) : string {
         return self::_PairedTags("td", $content, $attributes);
@@ -255,6 +259,8 @@ class HTML {
      * @param array|null $attributes
      * @param string|null $content
      * @return string
+     * 
+     * @deprecated 1.0 Use \tei187\HTMLBuilder\Table instead
      */
     public static function TableHeadingCell(?array $attributes = null, ?string $content = null) : string {
         return self::_PairedTags("th", $content, $attributes);
@@ -265,6 +271,8 @@ class HTML {
      * @param array|null $attributes
      * @param array|string|null $cells
      * @return string
+     *
+     * @deprecated 1.0 Use \tei187\HTMLBuilder\Table instead
      */
     public static function TableRow(?array $attributes = null, $cells = null) : string {
         $cellsHtml = "";
