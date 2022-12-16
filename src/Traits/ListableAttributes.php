@@ -25,7 +25,8 @@ trait ListableAttributes {
             if(!in_array($attr, $limit)) {
                 Utilities::empty($value)
                     ? $o .= " ".strtolower($attr)
-                    : $o .= " ".strtolower($attr)."='".htmlentities($value)."'";
+                    //: $o .= " ".strtolower($attr)."='".htmlentities($value)."'";
+                    : $o .= " ".strtolower($attr)."=\"{$value}\"";
             }
         }
         return $o;
