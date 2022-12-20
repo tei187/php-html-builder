@@ -15,6 +15,7 @@
         }
     ],
     "require": {
+        "php": ">=7.3",
         "tei187/utilities-php": "dev-main"
     },
     "require-dev": {
