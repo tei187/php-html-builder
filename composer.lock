@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/tei187/UtilitiesPHP.git",
-                "reference": "ad039fcd2a99122fb6c0768979725ed01eebd413"
+                "reference": "618b138fdc133f87fe632a02bc62686d4d263f29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tei187/UtilitiesPHP/zipball/ad039fcd2a99122fb6c0768979725ed01eebd413",
-                "reference": "ad039fcd2a99122fb6c0768979725ed01eebd413",
+                "url": "https://api.github.com/repos/tei187/UtilitiesPHP/zipball/618b138fdc133f87fe632a02bc62686d4d263f29",
+                "reference": "618b138fdc133f87fe632a02bc62686d4d263f29",
                 "shasum": ""
             },
             "require-dev": {
@@ -45,7 +45,7 @@
                 "issues": "https://github.com/tei187/UtilitiesPHP/issues",
                 "source": "https://github.com/tei187/UtilitiesPHP/tree/main"
             },
-            "time": "2022-10-19T13:27:48+00:00"
+            "time": "2022-12-13T14:24:20+00:00"
         }
     ],
     "packages-dev": [

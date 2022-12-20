@@ -1,18 +1,30 @@
-# Documentation
+# **PHP-TO-HTML package**
 
-## About
+## **About**
+---
+Scripts meant to help out with organizing HTML tag building through PHP, for a rather specific one case but makes sense enough to try out, if you really don't want/need Twig :D
 
-Scripts meant to help out with organizing HTML tag building through PHP, for a rather specific one case but makes sense enough to try out :D
+### **Features:**
+ * **Basic HTML** builder (content, forms, all the parts of HEAD you tend to google for),
+ * **Bootstrap** equivalent builder,
+ * **Constants** for Charset, Doctype and Vocabularies,
+ * **OpenGraph** handling: namespaces, default types, Twitter.
 
-Includes:
- * Basic HTML builder (content, forms, all the parts of HEAD you tend to google for),
- * Bootstrap equivalent builder,
- * Constants for Charset, Doctype and Vocabularies,
- * OpenGraph handling: namespaces, default types, Twitter.
+<br>
 
-## Examples
-### Basic HTML
-Input:
+## **Installation**
+---
+### **Composer**
+```shell
+    composer require tei187/php-html-builder
+```
+
+<br>
+
+## **Examples**
+---
+### **Basic HTML**
+#### *Input:*
 ```php
     use tei187\HTMLBuilder\Constants\Charset;
     use tei187\HTMLBuilder\HTML;
@@ -38,7 +50,7 @@ Input:
             )
         );
 ```
-Output:
+#### *Output:*
 ```html
 <!DOCTYPE html>
 <html prefix='og: http://ogp.me/ns#' lang='en-US'>
@@ -57,8 +69,10 @@ Output:
     </body>
 </html>
 ```
+---
 
-### Bootstrap
+### **Bootstrap**
+#### *Input:*
 ```php
     use tei187\HTMLBuilder\HTML;
     use tei187\HTMLBuilder\Head;
@@ -100,7 +114,7 @@ Output:
             )
         );
 ```
-Output:
+#### *Output:*
 ```html
 <!DOCTYPE html>
 <html>
@@ -129,3 +143,14 @@ Output:
     </body>
 </html>
 ```
+<br>
+
+## **Requires**
+---
+ - **UtilitiesPHP** : *tei187/utilities-php* ([GitHub](https://github.com/tei187/UtilitiesPHP) | [Packagist](https://packagist.org/packages/tei187/utilities-php))
+
+<br>
+
+## **Author**
+---
+ - [tei187](https://github.com/tei187)
