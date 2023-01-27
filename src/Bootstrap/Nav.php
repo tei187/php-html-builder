@@ -57,8 +57,8 @@ class Nav {
         $attributes = array_merge(
             $attributes, 
             [
-                'data-target' => $dataTarget, 
-                'data-toggle' => 'collapse', 
+                'data-bs-target' => $dataTarget, 
+                'data-bs-toggle' => 'collapse', 
                 'aria-controls' => str_replace("#", "", $dataTarget),
                 'aria-label' => (isset($attributes['aria-label']) ? $attributes['aria-label'] : "Toggle navigation"),
             ]
