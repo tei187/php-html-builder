@@ -51,7 +51,7 @@ class Nav {
                     : " navbar-expand-{$expand}"
                   );
 
-        return self::_PairedBootstrapTags('nav', "navbar{$expand}", $content, $attributes, []);
+        return self::_PairedBootstrapTags('nav', "navbar{$expandCss}", $content, $attributes, []);
     }
     public static function Toggler(array $attributes = [], ?string $dataTarget = null, ?string $content = null) : string {
         $attributes = array_merge(
