@@ -14,7 +14,7 @@ use tei187\Utilities;
  * use tei187\HTMLBuilder\Bootstrap\Nav;
  *
  * return
- * Nav::Nav(['class' => "navbar-expand-lg bg-light"],
+ * Nav::Nav(['class' => "bg-light"], "lg"
  *   Bootstrap::ContainerFluid([],
  *     Nav::Navbar([],
  *       Nav::Item([], Nav::Link([], "Item 1", "#", true) ) .
@@ -38,11 +38,32 @@ class Nav {
      * NAV.navbar
      *
      * @param array $attributes
+     * @param string|null $expand If null, navbar-expand won't be set. If "" (empty string) will set default, if other will use suffixed breakpoint.
      * @param string|null $content
      * @return string
      */
-    public static function Nav(array $attributes = [], ?string $content = null) : string {
-        return self::_PairedBootstrapTags('nav', 'navbar', $content, $attributes, []);
+    public static function Nav(array $attributes = [], ?string $expand = null, ?string $content = null) : string {
+        $expandCss = 
+            is_null($expand)
+                ? ""
+                : ( strlen($expand) == 0
+                    ? " navbar-expand"
+                    : " navbar-expand-{$expand}"
+                  );
+
+        return self::_PairedBootstrapTags('nav', "navbar{$expand}", $content, $attributes, []);
+    }
+    public static function Toggler(array $attributes = [], ?string $dataTarget = null, ?string $content = null) : string {
+        $attributes = array_merge(
+            $attributes, 
+            [
+                'data-target' => $dataTarget, 
+                'data-toggle' => 'collapse', 
+                'aria-controls' => str_replace("#", "", $dataTarget),
+                'aria-label' => (isset($attributes['aria-label']) ? $attributes['aria-label'] : "Toggle navigation"),
+            ]
+        );
+        return self::_PairedBootstrapTags('button', 'navbar-toggler', $content, $attributes);
     }
     /**
      * UL.navbar-nav
