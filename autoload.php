@@ -10,6 +10,8 @@
 // TRAITS
     require_once __DIR__ . "/src/Traits/ListableAttributes.php";
     require_once __DIR__ . "/src/Traits/ClosingTags.php";
+    require_once __DIR__ . "/src/Traits/HasAttributes.php";
+    require_once __DIR__ . "/src/Traits/HasClasses.php";
     require_once __DIR__ . "/src/Traits/BootstrapTags.php";
     require_once __DIR__ . "/src/Traits/Bootstrap/LineBreak.php";
 
@@ -22,8 +24,12 @@
 
     // Bootstrap
         require_once __DIR__ . "/src/Bootstrap.php";
-        require_once __DIR__ . "/src/Boostrap/Nav.php";
-        require_once __DIR__ . "/src/Boostrap/Col.php";
+        require_once __DIR__ . "/src/Bootstrap/Nav.php";
+        require_once __DIR__ . "/src/Bootstrap/Col.php";
+        require_once __DIR__ . "/src/Bootstrap/Dropdown/Dropdown.php";
+        require_once __DIR__ . "/src/Bootstrap/Dropdown/Button.php";
+        require_once __DIR__ . "/src/Bootstrap/Dropdown/Menu/CustomDropdownMenu.php";
+        require_once __DIR__ . "/src/Bootstrap/Dropdown/Menu/ListDropdownMenu.php";
 
     // OpenGraph
         require_once __DIR__ . "/src/OpenGraph.php";

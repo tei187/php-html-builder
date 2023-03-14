@@ -376,4 +376,12 @@ class HTML {
     public static function ul(?string $content = null, ?array $attributes = []) : string {
         return self::List("ul", $attributes, $content);
     }
+
+    public static function _checkStringForTag(string $tag, string $string) : bool {
+        $test = preg_match('/[<]{1}'.$tag.'.*[>]{1}(.*)[<]{1}[\/]{1}'.$tag.'[>]{1}/', $string);
+        return 
+            $test == 1
+                ? true
+                : false;
+    }
 }

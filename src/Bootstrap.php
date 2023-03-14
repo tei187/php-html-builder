@@ -75,6 +75,8 @@ class Bootstrap {
      * @param string|null $name
      * @param array|null $attributes
      * @return string
+     * 
+     * @link https://fontawesome.com/v4/icons/ FontAwesome icons reference.
      */
     public static function Icon(?string $name, array $attributes = []) : string {
         if(key_exists('class', $attributes)) {
