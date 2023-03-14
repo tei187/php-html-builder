@@ -181,4 +181,25 @@ class Form {
                     ? self::_ListAttributes($attributes, [ 'type', 'id', 'name', 'value' ]) : "")
           . " />" . (!empty($content) ? $content : "") . "</textarea>";
     }
+
+    /**
+     * Select HTML5 element.
+     *
+     * @param string|null $id Id attribute.
+     * @param string|null $name Name attribute.
+     * @param array|null $attributes Other attributes.
+     * @param int|float|string|null $content Content.
+     * @return string
+     */
+    public static function Select(?string $id = null, ?string $name = null, ?array $attributes = [], $content = null) : string {
+        return
+            "<select"
+                . (!empty($id)
+                    ? " id='{$id}'" : "")
+                . (!empty($name)
+                    ? " name='{$name}'" : "")
+                . (!empty($attributes) && is_array($attributes)
+                    ? self::_ListAttributes($attributes, [ 'type', 'id', 'name', 'value' ]) : "")
+                . " />" . (!empty($content) ? $content : "") . "</select>";
+    }
 }
