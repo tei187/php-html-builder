@@ -17,7 +17,7 @@ class CustomDropdownMenu {
     }
 
     public function addItem(string $item) : self { $this->items[] = $item; return $this; }
-    public function setType(string $tag) : self { $this->tag[] = $tag; return $this; }
+    public function setTag(string $tag) : self { $this->tag[] = $tag; return $this; }
     /**
      * Sets `items` to FALSE, indicating a self-closing tag.
      *

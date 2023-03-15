@@ -433,7 +433,7 @@ class Bootstrap {
                 if(is_array($item)) {
                     $optionsArr[] = Form::OptGroup($item['_label'], $item['options'], $selected);
                 } else {
-                    $optionsArr[] = Form::Option($value, $item, $selected == $value ? true : false);
+                    $optionsArr[] = Form::Option($value, $item, $selected === $value ? true : false);
                 }
             }
             $optionsArr = array_filter($optionsArr);

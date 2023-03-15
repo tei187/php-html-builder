@@ -2,6 +2,9 @@
 
 namespace tei187\HTMLBuilder\Traits;
 
+/**
+ * Handles elements classes.
+ */
 trait HasClasses {
     private $classes = [];
     
@@ -18,11 +21,19 @@ trait HasClasses {
         return $this;
     }
 
+    /**
+     * @param string $class
+     * @return self
+     */
     public function addClass(string $class) : self {
         $this->classes[] = $class;
         return $this;
     }
 
+    /**
+     * @param string $class
+     * @return self
+     */
     public function removeClass(string $class) : self {
         $key = array_search($class, $this->classes);
         if($key !== false) { unset($this->classes[$key]); }

@@ -149,9 +149,8 @@ class Form {
                     Form::Option(
                         $key,
                         $label,
-                        ($key == $selected ? true : false
-                    )
-                );
+                        ($key === $selected ? true : false)
+                    );
             }
             $optionsArr = array_filter($optionsArr);
             $optionsArr = implode(PHP_EOL, $optionsArr);

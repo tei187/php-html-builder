@@ -2,10 +2,18 @@
 
 namespace tei187\HTMLBuilder\Traits;
 
+/**
+ * Handles element attributes.
+ */
 trait HasAttributes {
     protected $attributes = [];
 
-    public function addAttribute(string $name, string $value) : self { 
+    /**
+     * @param string $name Name has to be valid attribute name.
+     * @param string $value
+     * @return self
+     */
+    public function setAttribute(string $name, string $value) : self { 
         $this->attributes[$name] = $value;
         return $this;
     }
@@ -14,13 +22,17 @@ trait HasAttributes {
      * @param array $attributes Keys have to be valid attribute names.
      * @return self
      */
-    public function addManyAttributes(array $attributes = []) : self {
+    public function setManyAttributes(array $attributes = []) : self {
         foreach($attributes as $name => $value) {
             $this->addAttribute($name, $value);
         }
         return $this;
     }
 
+    /**
+     * @param string $attributeName
+     * @return self
+     */
     public function removeAttribute(string $attributeName) : self {
         $key = array_search($attributeName, $this->attributes);
         if($key !== false) {
