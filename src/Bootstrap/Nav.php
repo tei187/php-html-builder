@@ -2,7 +2,7 @@
 
 namespace tei187\HTMLBuilder\Bootstrap;
 
-use tei187\HTMLBuilder\Traits\BootstrapTags;
+use tei187\HTMLBuilder\Traits\Bootstrap\BootstrapTags;
 use tei187\Utilities;
 
 /**

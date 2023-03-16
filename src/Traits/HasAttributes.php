@@ -40,4 +40,37 @@ trait HasAttributes {
         }
         return $this;
     }
+
+    /**
+     * Returns combined string of all attributes.
+     * @param boolean $withMergedClass If true, seeks if object has 'classes' property and merges it with rest of attributes.
+     * @return string
+     */
+    public function getAttributesStr(bool $withMergedClass = false) : string {
+        $str = "";
+        $attributes = $this->getAttributes($withMergedClass);
+        foreach($attributes as $name => $value) {
+            $str .= "{$name}='{$value}' ";
+        }
+        return trim($str);
+    }
+
+    /**
+     * Returns combined array of all attributes.
+     * @param boolean $withMergedClass If true, seeks if object has 'classes' property and merges it with rest of attributes.
+     * @return array
+     */
+    public function getAttributes(bool $withMergedClass = false) : array {
+        if($withMergedClass) {
+            $keyExists = key_exists('class', $this->attributes);
+            $attr = $this->attributes;
+            if($keyExists && isset($this->classes)) {
+                $attr['class'] = $attr['class'] . " " . implode(" ", array_unique(array_merge(explode(" ", $attr['classes']), $this->classes)));
+            } elseif(!$keyExists && isset($this->classes)) {
+                $attr['class'] = implode(" ", $this->classes);
+            }
+            return $attr;
+        }
+        return $this->attributes;
+    }
 }

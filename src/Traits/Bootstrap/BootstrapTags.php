@@ -1,6 +1,6 @@
 <?php
 
-namespace tei187\HTMLBuilder\Traits;
+namespace tei187\HTMLBuilder\Traits\Bootstrap;
 
 use tei187\HTMLBuilder\Traits\ListableAttributes;
 

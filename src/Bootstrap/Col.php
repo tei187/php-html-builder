@@ -3,7 +3,10 @@
 namespace tei187\HTMLBuilder\Bootstrap;
 
 use tei187\HTMLBuilder\Traits\Bootstrap\LineBreak;
-use tei187\HTMLBuilder\Bootstrap;
+use tei187\HTMLBuilder\HTML;
+use tei187\HTMLBuilder\Traits\Bootstrap\BreakpointForming;
+use tei187\HTMLBuilder\Traits\HasAttributes;
+use tei187\HTMLBuilder\Traits\HasClasses;
 use tei187\Utilities;
 
 /**
@@ -20,7 +23,10 @@ use tei187\Utilities;
  * ```
  */
 class Col {
-    use LineBreak;
+    use LineBreak,
+        HasClasses,
+        HasAttributes,
+        BreakpointForming;
 
     private $xs = null;
     private $sm = null;
@@ -38,59 +44,112 @@ class Col {
     private $offset_lg = null;
     private $offset_xl = null;
 
+    private $content = "";
+
+    public function __construct() {
+        $this->addClass('col');
+    }
+
+    /**
+     * @param string|null $content
+     * @return self
+     */
+    public function setContent(?string $content) : self {
+        if(is_null($content)) {
+            $this->content = "";
+        } else {
+            $this->content = $content;
+        }
+        return $this;
+    }
+
+    /**
+     * Returns arrays containing data about selected breakpoint-based settings: column size, column offset, order.
+     * @return array
+     */
+    private function getBreakpointsArrayCombined() : array {
+        return [
+            'breakpoints' => [
+                'xs' => $this->xs,
+                'sm' => $this->sm,
+                'md' => $this->md,
+                'lg' => $this->lg,
+                'xl' => $this->xl,
+            ],
+            'order' => [
+                'xs' => $this->order_xs,
+                'sm' => $this->order_sm,
+                'md' => $this->order_md,
+                'lg' => $this->order_lg,
+                'xl' => $this->order_xl,
+            ],
+            'offset' => [
+                'xs' => $this->offset_xs,
+                'sm' => $this->offset_sm,
+                'md' => $this->offset_md,
+                'lg' => $this->offset_lg,
+                'xl' => $this->offset_xl,
+            ]
+        ];
+    }
+
+    /**
+     * Returns array of formatted breakpoint-based settings (array of class names).
+     *
+     * @param boolean $mergeWithClass If true, seeks if object has 'classes' property and merges breakpoint-based settings with already assigned additional classes.
+     * @return array
+     */
+    public function getBreakpointsClassArr(bool $mergeWithClass = false) : array {
+        $data = $this->getBreakpointsArrayCombined();
+        $classes = [];
+        foreach($data as $index => $values) {
+            if(!empty($values)) {
+                switch($index) {
+                    case 'breakpoints': $prefix = "col"; break;
+                    case 'order':       $prefix = "order"; break;
+                    case 'offset':      $prefix = "offset"; break;
+                }
+
+                foreach($values as $k => $v) {
+                    $str = self::FormBreakpoint($prefix, $k, $v);
+                    !is_null($str) 
+                        ? $classes[] = $str
+                        : null;
+                }
+            }
+        }
+
+        return
+            $mergeWithClass
+                ? array_unique( array_filter( array_merge($this->classes, $classes)))
+                : $classes;
+    }
+
     /**
      * Returns formatted 'class' attribute for column's width breakpoints and order.
      *
      * @return string
      */
     public function getClassStr() : string {
-        $breakpoints = [
-            'xs' => $this->xs,
-            'sm' => $this->sm,
-            'md' => $this->md,
-            'lg' => $this->lg,
-            'xl' => $this->xl,
-        ];
-        $order = [
-            'xs' => $this->order_xs,
-            'sm' => $this->order_sm,
-            'md' => $this->order_md,
-            'lg' => $this->order_lg,
-            'xl' => $this->order_xl,
-        ];
-        $offset = [
-            'xs' => $this->offset_xs,
-            'sm' => $this->offset_sm,
-            'md' => $this->offset_md,
-            'lg' => $this->offset_lg,
-            'xl' => $this->offset_xl,
-        ];
-        $class = "col";
-        foreach([ $breakpoints, $order, $offset ] as $index => $values) {
+        $data = $this->getBreakpointsArrayCombined();
+        $unified = [];
+
+        foreach($data as $index => $values) {
             if(!empty($values)) {
                 switch($index) {
-                    case 0: $prefix = "col"; break;
-                    case 1: $prefix = "order"; break;
-                    case 2: $prefix = "offset"; break;
+                    case 'breakpoints': $prefix = "col"; break;
+                    case 'order':       $prefix = "order"; break;
+                    case 'offset':      $prefix = "offset"; break;
                 }
 
                 foreach($values as $k => $v) {
-                    !is_null($v) && $v > 0
-                        ? ( 
-                            $k == "xs"
-                                ? $class .= " {$prefix}-{$v}"
-                                : $class .= " {$prefix}-{$k}-{$v}" 
-                            )
-                        : (
-                            is_string($v) && strlen($v) > 0
-                                ? $class .= " {$prefix}-{$k}-{$v}"
-                                : null
-                        );
+                    $str = self::FormBreakpoint($prefix, $k, $v);
+                    $unified[] = !is_null($str) ? $str : null;
                 }
             }
         }
-        
-        return $class;
+
+        return implode(" ", array_unique( array_filter( array_merge($this->classes, $unified))));
     }
 
     /* WIDTH BREAKPOINTS */
@@ -316,7 +375,7 @@ class Col {
         }
 
     /* RENDER */
-
+    
         /**
          * Renders column element.
          *
@@ -329,7 +388,7 @@ class Col {
         public static function Column($properties = null, ?array $attributes = [], ?string $content = null) : string {
             if(Utilities::is_object_of_class($properties, "tei187\\HTMLBuilder\\Bootstrap\\Col")) {
                 $class = $properties->getClassStr();
-            } elseif(is_array($properties) or is_null($properties)) {
+            } elseif(is_array($properties) || is_null($properties)) {
                 $class = (new Col())->SetBreakpointsByArray($properties)->getClassStr();
             }
 
@@ -337,11 +396,18 @@ class Col {
             
             if(is_array($attributes)) {
                 if(key_exists('class', $attributes))
-                    $attributes['class'] .= " {$class}";
+                    $attributes['class'] = implode(" ", array_unique(array_merge(explode(" ", $attributes['class']), explode(" ", $class))));
                 else
                     $attributes['class'] = $class;
             }
 
-            return Bootstrap::Col($attributes, $content);
+            return HTML::Custom('div', $attributes, $content);
         }
+
+        public function render() {
+            return self::Column($this, $this->getAttributes(true), $this->content);
+        }
+
+    // supporting methods
+
 }

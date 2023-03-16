@@ -27,6 +27,7 @@ trait HasClasses {
      */
     public function addClass(string $class) : self {
         $this->classes[] = $class;
+        $this->classes = array_unique($this->classes);
         return $this;
     }
 

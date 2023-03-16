@@ -3,7 +3,7 @@
 namespace tei187\HTMLBuilder;
 
 use tei187\HTMLBuilder\Traits\ListableAttributes;
-use tei187\HTMLBuilder\Traits\BootstrapTags;
+use tei187\HTMLBuilder\Traits\Bootstrap\BootstrapTags;
 use tei187\HTMLBuilder\HTML as Elements;
 use tei187\HTMLBuilder\Bootstrap\Nav;
 
