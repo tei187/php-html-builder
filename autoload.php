@@ -14,7 +14,7 @@
     require_once __DIR__ . "/src/Traits/HasClasses.php";
     require_once __DIR__ . "/src/Traits/Bootstrap/BootstrapTags.php";
     require_once __DIR__ . "/src/Traits/Bootstrap/LineBreak.php";
-    require_once __DIR__ . "/src/Traits/Bootstrap/BreakpointsForming.php";
+    require_once __DIR__ . "/src/Traits/Bootstrap/BreakpointForming.php";
 
 // GENERATORS
     // general HTML
