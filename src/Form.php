@@ -119,7 +119,7 @@ class Form {
      */
     public static function Option($key = null, $label = null, ?bool $selected = false) : string {
         return
-            $label == "%%hr%%"
+            $label === "%%hr%%"
                 ? (
                     "<option disabled style='text-align:left;color:#ddd;padding:0'>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</option>"
                   )
